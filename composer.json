@@ -1,0 +1,31 @@
+{
+    "name": "klix-app/merchant-api-php",
+    "description": "Klix merchant API PHP SDK",
+    "homepage": "http://developers.klix.app",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Klix.app",
+            "homepage": "https://github.com/klix-app"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "guzzlehttp/guzzle": "^6.2",
+        "firebase/php-jwt": "^5.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    },
+    "autoload": {
+        "psr-4": { "Klix\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Klix\\" : "test/" }
+    },
+    "scripts": {
+        "unit": "phpunit"
+    }
+}

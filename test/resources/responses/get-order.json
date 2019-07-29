@@ -1,0 +1,31 @@
+{
+  "id": "9482996d-d3b2-4518-84aa-d6649bad6e99",
+  "orderLines": [
+    {
+      "label": "PHILIPS matu fēns XR3857",
+      "currency": "EUR",
+      "amount": 32,
+      "taxAmount": 0,
+      "totalAmount": 32,
+      "taxRate": 0
+    }
+  ],
+  "total": {
+    "currency": "EUR",
+    "amount": 26,
+    "taxAmount": 6,
+    "totalAmount": 32
+  },
+  "status": "PENDING",
+  "purchaseCountry": null,
+  "purchaseCurrency": "EUR",
+  "locale": null,
+  "merchantReference": null,
+  "merchantUrls": {
+    "terms": "www.demo-shop.lv/terms-and-conditions",
+    "placeOrder": "www.demo-shop.lv/api/orders",
+    "verification": "www.demo-shop.lv/api/orders/verifications",
+    "confirmation": "www.demo-shop.lv/api/orders/confirmations"
+  },
+  "customer": null
+}
