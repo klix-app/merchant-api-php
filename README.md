@@ -43,6 +43,10 @@ require_once('/path/to/merchant-api-php/vendor/autoload.php');
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+use Klix\ApiConfigurationBuilder;
+use Klix\ApiClient;
+use Klix\Merchant\MerchantApi;
+
 $apiConfiguration = ApiConfigurationBuilder::builder()
     ->setBaseUri(ApiConfiguration::TEST_BASE_URL)
     ->setApiKey('52a49f81-0869-40a6-8dde-96a624e61b54')
@@ -69,6 +73,8 @@ After Klix user has confirmed an order but before his card has been charged Klix
 
 ```php
 <?php
+use Klix\Merchant\RequestDecoder;
+
 $requestBodyString = //obtain request body
 $orderVerificationRequest = RequestDecoder::decodeOrderVerificationRequest($requestBodyString, $apiConfiguration);
 $orderId = $orderVerificationRequest.getOrderId();
@@ -79,6 +85,8 @@ $orderId = $orderVerificationRequest.getOrderId();
 Order verification request contains only order identified. Full order details can be retrieved before confirming/rejecting on order.
 ```php
 <?php
+use Klix\ApiException;
+
 try {
     $order = $merchantApi->getOrder($order_id);
     print_r($result);
@@ -93,6 +101,8 @@ Retrieved order contains both information about customer and products included i
 If verification is successful Klix verify order API end-point should be called.
 ```php
 <?php
+use Klix\ApiException;
+
 try {
     $merchantApi->verifyOrder($order);
 } catch (ApiException $e) {
@@ -103,6 +113,8 @@ try {
 If there are any issues during order verification order can be rejected. When rejecting an order rejection reason should be specified. 
 ```php
 <?php
+use Klix\Merchant\OrderRejection;
+
 try {
 	$orderRejection = new OrderRejection('Out of stock');
     $merchantApi->rejectOrder($orderId, $orderRejection);
@@ -115,13 +127,21 @@ try {
 Upon purchase completion Klix back-end will send purchase completed callback to merchant's internet shop. 
 ```php
 <?php
+use Klix\Merchant\RequestDecoder;
+
 $requestBodyString = //obtain request body
 $purchaseFinalizedNotificationRequest = RequestDecoder::decodePurchaseFinalizedNotificationRequest($requestBodyString, $apiConfiguration);
 $orderId = $purchaseFinalizedNotificationRequest.getOrderId();
 ?>
 ```
 
-## Author
+## About
+
+### License
+
+Klix.app Merchant API PHP client library is licensed under the Apache 2.0 License - see the `LICENSE` file for details
+
+### Author
 
 developers@klix.app
 
