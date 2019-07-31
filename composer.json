@@ -20,10 +20,10 @@
         "phpunit/phpunit": "^4.8"
     },
     "autoload": {
-        "psr-4": { "Klix\\" : "lib/" }
+        "psr-4": { "Klix\\" : "lib/Klix" }
     },
     "autoload-dev": {
-        "psr-4": { "Klix\\" : "test/" }
+        "psr-4": { "Klix\\" : "test/Klix" }
     },
     "scripts": {
         "unit": "phpunit"

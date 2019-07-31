@@ -44,7 +44,7 @@ abstract class BaseApiClientTest extends PHPUnit_Framework_TestCase
 
 	protected function getTestResourceFileContents($fileName)
 	{
-		$fullFileName = dirname(__DIR__) . '/test/resources/' . $fileName;
+		$fullFileName = dirname(__DIR__) . '/Klix/resources/' . $fileName;
 		return file_get_contents($fullFileName);
 	}
 

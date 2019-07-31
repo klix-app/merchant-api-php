@@ -2,8 +2,8 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" packagePrefix="Klix\" />
-      <sourceFolder url="file://$MODULE_DIR$/lib" isTestSource="false" packagePrefix="Klix\" />
+      <sourceFolder url="file://$MODULE_DIR$/test/Klix" isTestSource="true" packagePrefix="Klix\" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/Klix" isTestSource="false" packagePrefix="Klix\" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
