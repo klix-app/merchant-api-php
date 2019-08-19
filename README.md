@@ -18,7 +18,7 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
     }
   ],
   "require": {
-    "klix/merchant-api-php": "*@dev"
+    "klix-app/merchant-api-php": "*@dev"
   }
 }
 ```
