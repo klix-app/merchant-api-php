@@ -4,9 +4,9 @@ namespace Klix;
 
 class ApiConfiguration
 {
-	const API_BASE_URL = "https://api-uat.cpay.lv";
+	const API_BASE_URL = "https://api.klix.app";
 
-	const TEST_BASE_URL = "https://api-dev.cpay.lv";
+	const TEST_BASE_URL = "https://api.stage.klix.app";
 
 	/**
 	 * @var string
