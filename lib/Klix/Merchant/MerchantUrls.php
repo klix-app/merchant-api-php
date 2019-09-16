@@ -27,7 +27,7 @@ class MerchantUrls extends Model
      */
     public function getPlaceOrder()
     {
-        return $this->values['placeOrder'];
+        return $this->values['place_order'];
     }
 
     /**
@@ -36,7 +36,7 @@ class MerchantUrls extends Model
      */
     public function setPlaceOrder($placeOrder)
     {
-        $this->values['placeOrder'] = $placeOrder;
+        $this->values['place_order'] = $placeOrder;
         return $this;
     }
 

@@ -1,31 +1,59 @@
 {
-  "id": "9482996d-d3b2-4518-84aa-d6649bad6e99",
-  "orderLines": [
-    {
-      "label": "PHILIPS matu fēns XR3857",
-      "currency": "EUR",
-      "amount": 32,
-      "taxAmount": 0,
-      "totalAmount": 32,
-      "taxRate": 0
-    }
-  ],
-  "total": {
-    "currency": "EUR",
-    "amount": 26,
-    "taxAmount": 6,
-    "totalAmount": 32
+  "company": {
+    "name": "XYZ",
+    "address": "Republikas laukums 2a",
+    "registration_number": "01234567890",
+    "vat_number": "LV01234567890"
   },
-  "status": "PENDING",
-  "purchaseCountry": null,
-  "purchaseCurrency": "EUR",
-  "locale": null,
-  "merchantReference": null,
-  "merchantUrls": {
+  "customer": {
+    "email": "john.doe@xyz.lv",
+    "first_name": "John",
+    "last_name": "Doe",
+    "phone_number": "37120000000"
+  },
+  "id": "9482996d-d3b2-4518-84aa-d6649bad6e99",
+  "merchant_urls": {
     "terms": "www.demo-shop.lv/terms-and-conditions",
-    "placeOrder": "www.demo-shop.lv/api/orders",
+    "place_order": "www.demo-shop.lv/api/orders",
     "verification": "www.demo-shop.lv/api/orders/verifications",
     "confirmation": "www.demo-shop.lv/api/orders/confirmations"
   },
-  "customer": null
+  "order_amount": 32,
+  "order_lines": [
+    {
+      "amount": 32,
+      "name": "PHILIPS matu fēns XR3857",
+      "quantity": 1,
+      "reference": "PHILIPSXR3857",
+      "tax_rate": 0.21,
+      "type": "PHYSICAL_GOODS",
+      "unit": "PIECE"
+    }
+  ],
+  "order_tax_amount": 6.72,
+  "purchase_currency": "EUR",
+  "shipment":  {
+    "method": {
+      "id": "DPDPICKUP",
+      "name": "DPD Pickup"
+    },
+    "address": {
+      "city": "Rīga",
+      "country": "Latvia",
+      "latitude": 0,
+      "longitude": 0,
+      "postal_code": "LV-1013",
+      "street": "Valdemāra iela 112"
+    },
+    "contact_phone": "37120000000",
+    "date": "2019-09-15",
+    "pickup_point": {
+      "name": "Paku Skapis Rimi Valdemārs",
+      "external_id": "LV90007",
+      "comments": "",
+      "service_hours": "I-VII 00:00-24:00"
+    },
+    "type": "PICKUP_POINT"
+  },
+  "status": "PENDING"
 }

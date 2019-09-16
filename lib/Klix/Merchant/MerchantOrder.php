@@ -4,6 +4,25 @@ namespace Klix\Merchant;
 
 class MerchantOrder extends Model
 {
+
+	/**
+	 * @return Company
+	 */
+	public function getCompany()
+	{
+		return new Company($this->values['company']);
+	}
+
+	/**
+	 * @param Company $company
+	 * @return $this
+	 */
+	public function setCompany($company)
+	{
+		$this->values['company'] = $company->values;
+		return $this;
+	}
+
 	/**
 	 * @return Customer
 	 */
@@ -41,20 +60,96 @@ class MerchantOrder extends Model
 	}
 
 	/**
-	 * @return string
+	 * @return MerchantUrls
 	 */
-	public function getLocale()
+	public function getMerchantUrls()
 	{
-		return $this->values['locale'];
+		return new MerchantUrls($this->values['merchant_urls']);
 	}
 
 	/**
-	 * @param string $locale
+	 * @param MerchantUrls $merchantUrls
 	 * @return $this
 	 */
-	public function setLocale($locale)
+	public function setMerchantUrls($merchantUrls)
 	{
-		$this->values['locale'] = $locale;
+		$this->values['merchant_urls'] = $merchantUrls->values;
+		return $this;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getOrderAmount()
+	{
+		return $this->values['order_amount'];
+	}
+
+	/**
+	 * @param float $orderAmount
+	 * @return $this
+	 */
+	public function setOrderAmount($orderAmount)
+	{
+		$this->values['order_amount'] = $orderAmount;
+		return $this;
+	}
+
+	/**
+	 * @return OrderItem[]
+	 */
+	public function getOrderLines()
+	{
+		return array_map(function($orderLineValues) {
+			return new OrderItem($orderLineValues);
+		}, (array) $this->values['order_lines']);
+	}
+
+	/**
+	 * @param OrderItem[] $orderLines
+	 * @return $this
+	 */
+	public function setOrderLines($orderLines)
+	{
+		$this->values['order_lines'] = array_map(function($orderItem) {
+			return $orderItem->values;
+		}, $orderLines);
+		return $this;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getOrderTaxAmount()
+	{
+		return $this->values['order_tax_amount'];
+	}
+
+	/**
+	 * @param float $orderTaxAmount
+	 * @return $this
+	 */
+	public function setOrderTaxAmount($orderTaxAmount)
+	{
+		$this->values['order_tax_amount'] = $orderTaxAmount;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPurchaseCurrency()
+	{
+		return $this->values['purchase_currency'];
+	}
+
+	/**
+	 * @param string $purchaseCurrency
+	 * @return $this
+	 */
+	public function setPurchaseCurrency($purchaseCurrency)
+	{
+		$this->values['purchase_currency'] = $purchaseCurrency;
 		return $this;
 	}
 
@@ -77,78 +172,20 @@ class MerchantOrder extends Model
 	}
 
 	/**
-	 * @return MerchantUrls
+	 * @return Shipment
 	 */
-	public function getMerchantUrls()
+	public function getShipment()
 	{
-		return new MerchantUrls($this->values['merchantUrls']);
+		return new Shipment($this->values['shipment']);
 	}
 
 	/**
-	 * @param MerchantUrls $merchantUrls
+	 * @param Shipment $shipment
 	 * @return $this
 	 */
-	public function setMerchantUrls($merchantUrls)
+	public function setShipment($shipment)
 	{
-		$this->values['merchantUrls'] = $merchantUrls->values;
-		return $this;
-	}
-
-	/**
-	 * @return OrderItem[]
-	 */
-	public function getOrderLines()
-	{
-		return array_map(function($orderLineValues) {
-			return new OrderItem($orderLineValues);
-		}, (array) $this->values['orderLines']);
-	}
-
-	/**
-	 * @param OrderItem[] $orderLines
-	 * @return $this
-	 */
-	public function setOrderLines($orderLines)
-	{
-		$this->values['orderLines'] = array_map(function($orderItem) {
-			return $orderItem->values;
-		}, $orderLines);
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getPurchaseCountry()
-	{
-		return $this->values['purchaseCountry'];
-	}
-
-	/**
-	 * @param string $purchaseCountry
-	 * @return $this
-	 */
-	public function setPurchaseCountry($purchaseCountry)
-	{
-		$this->values['purchaseCountry'] = $purchaseCountry;
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getPurchaseCurrency()
-	{
-		return $this->values['purchaseCurrency'];
-	}
-
-	/**
-	 * @param string $purchaseCurrency
-	 * @return $this
-	 */
-	public function setPurchaseCurrency($purchaseCurrency)
-	{
-		$this->values['purchaseCurrency'] = $purchaseCurrency;
+		$this->values['shipment'] = $shipment->getValues();
 		return $this;
 	}
 
@@ -167,24 +204,6 @@ class MerchantOrder extends Model
 	public function setStatus($status)
 	{
 		$this->values['status'] = $status;
-		return $this;
-	}
-
-	/**
-	 * @return OrderTotal
-	 */
-	public function getTotal()
-	{
-		return new OrderTotal($this->values['total']);
-	}
-
-	/**
-	 * @param OrderTotal $total
-	 * @return $this
-	 */
-	public function setTotal($total)
-	{
-		$this->values['total'] = $total->values;
 		return $this;
 	}
 }

@@ -7,36 +7,72 @@ class Customer extends Model
 	/**
 	 * @return string
 	 */
-    public function getDateOfBirth()
+    public function getEmail()
     {
-        return $this->values['dateOfBirth'];
+        return $this->values['email'];
     }
 
 	/**
-	 * @param $dateOfBirth string
+	 * @param $email string
 	 * @return $this
 	 */
-    public function setDateOfBirth($dateOfBirth)
+    public function setEmail($email)
     {
-        $this->values['dateOfBirth'] = $dateOfBirth;
+        $this->values['email'] = $email;
         return $this;
     }
 
 	/**
 	 * @return string
 	 */
-    public function getNin()
+    public function getFirstName()
     {
-        return $this->values['nin'];
+        return $this->values['first_name'];
     }
 
 	/**
-	 * @param $nin string
+	 * @param $firstName string
 	 * @return $this
 	 */
-    public function setNin($nin)
+    public function setFirstName($firstName)
     {
-        $this->values['nin'] = $nin;
+        $this->values['first_name'] = $firstName;
         return $this;
     }
+
+	/**
+	 * @return string
+	 */
+	public function getLastName()
+	{
+		return $this->values['last_name'];
+	}
+
+	/**
+	 * @param $lastName string
+	 * @return $this
+	 */
+	public function setLastName($lastName)
+	{
+		$this->values['last_name'] = $lastName;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPhoneNumber()
+	{
+		return $this->values['phone_number'];
+	}
+
+	/**
+	 * @param $phoneNumber string
+	 * @return $this
+	 */
+	public function setPhoneNumber($phoneNumber)
+	{
+		$this->values['phone_number'] = $phoneNumber;
+		return $this;
+	}
 }

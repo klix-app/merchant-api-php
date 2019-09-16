@@ -25,63 +25,63 @@ class OrderItem extends Model
     /**
      * @return string
      */
-    public function getCurrency()
+    public function getName()
     {
-        return $this->values['currency'];
+        return $this->values['name'];
     }
 
     /**
-     * @param string $currency
+     * @param string $name
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setName($name)
     {
-        $this->values['currency'] = $currency;
+        $this->values['name'] = $name;
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->values['label'];
-    }
+	/**
+	 * @return float
+	 */
+	public function getQuantity()
+	{
+		return $this->values['quantity'];
+	}
 
-    /**
-     * @param string $label
-     * @return $this
-     */
-    public function setLabel($label)
-    {
-        $this->values['label'] = $label;
-        return $this;
-    }
+	/**
+	 * @param float $quantity
+	 * @return $this
+	 */
+	public function setQuantity($quantity)
+	{
+		$this->values['quantity'] = $quantity;
+		return $this;
+	}
 
-    /**
-     * @return float
-     */
-    public function getTaxAmount()
-    {
-        return $this->values['tax_amount'];
-    }
+	/**
+	 * @return string
+	 */
+	public function getReference()
+	{
+		return $this->values['reference'];
+	}
 
-    /**
-     * @param float $taxAmount
-     * @return $this
-     */
-    public function setTaxAmount($taxAmount)
-    {
-        $this->values['taxAmount'] = $taxAmount;
-        return $this;
-    }
+	/**
+	 * @param string $reference
+	 * @return $this
+	 */
+	public function setReference($reference)
+	{
+		$this->values['reference'] = $reference;
+		return $this;
+	}
 
     /**
      * @return float
      */
     public function getTaxRate()
     {
-        return $this->values['taxRate'];
+        return $this->values['tax_rate'];
     }
 
     /**
@@ -90,25 +90,43 @@ class OrderItem extends Model
      */
     public function setTaxRate($taxRate)
     {
-        $this->values['taxRate'] = $taxRate;
+        $this->values['tax_rate'] = $taxRate;
         return $this;
     }
 
-    /**
-     * @return float
-     */
-    public function getTotalAmount()
-    {
-        return $this->values['totalAmount'];
-    }
+	/**
+	 * @return string Order item type. Possible values: PHYSICAL_GOODS, DIGITAL_GOODS, SHIPPING, UNKNOWN
+	 */
+	public function getType()
+	{
+		return $this->values['type'];
+	}
 
-    /**
-     * @param float $totalAmount
-     * @return $this
-     */
-    public function setTotalAmount($totalAmount)
-    {
-        $this->values['totalAmount'] = $totalAmount;
-        return $this;
-    }
+	/**
+	 * @param string $type
+	 * @return $this
+	 */
+	public function setType($type)
+	{
+		$this->values['type'] = $type;
+		return $this;
+	}
+
+	/**
+	 * @return string Order item unit. Possible values: PIECE, KILOGRAM, METER, LITRE, HOUR
+	 */
+	public function getUnit()
+	{
+		return $this->values['unit'];
+	}
+
+	/**
+	 * @param string $unit
+	 * @return $this
+	 */
+	public function setUnit($unit)
+	{
+		$this->values['unit'] = $unit;
+		return $this;
+	}
 }
