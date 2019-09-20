@@ -30,7 +30,7 @@ class MerchantApi
     	Preconditions::checkNotNull($order_id, "Order id not specified");
     	$request = $this->apiClient->createRequest(
     		'GET',
-			'/merchant/public/{merchantId}/orders/{orderId}',
+			'/merchants/{merchantId}/orders/{orderId}',
 			['orderId'=>$order_id]
 		);
 		return $this->apiClient->makeHttpCall($request, '\Klix\Merchant\MerchantOrder');
@@ -49,7 +49,7 @@ class MerchantApi
 		Preconditions::checkNotNull($body->getReasonCode(), "Order rejection reason not specified");
 		$request = $this->apiClient->createRequest(
 			'DELETE',
-			'/merchant/public/{merchantId}/orders/{orderId}/reject',
+			'/merchants/{merchantId}/orders/{orderId}',
 			['orderId'=>$order_id],
 			$body->getValues()
 		);
@@ -65,7 +65,7 @@ class MerchantApi
 		Preconditions::checkNotNull($body, "Order not specified");
 		$request = $this->apiClient->createRequest(
 			'PUT',
-			'/merchant/public/{merchantId}/orders/{orderId}/verify',
+			'/merchants/{merchantId}/orders/{orderId}',
 			['orderId'=>$body->getId()],
 			$body->getValues()
 		);

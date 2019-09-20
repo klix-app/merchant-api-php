@@ -60,7 +60,7 @@ class MerchantApiTest extends BaseApiClientTest
 		$this->assertEquals('I-VII 00:00-24:00', $order->getShipment()->getPickupPoint()->getServiceHours());
 		$this->assertEquals('PENDING', $order->getStatus());
 
-		$uri = new Uri("https://api.stage.klix.app/merchant/public/f6cef80b-92a4-4bc2-b611-7dc597f9ba60/orders/$orderId");
+		$uri = new Uri("https://api.stage.klix.app/merchants/f6cef80b-92a4-4bc2-b611-7dc597f9ba60/orders/$orderId");
 		$this->requestMatched([
 			RequestMatchers::httpMethodIs('GET'),
 			RequestMatchers::requestUriIs($uri),
@@ -78,7 +78,7 @@ class MerchantApiTest extends BaseApiClientTest
 
 		$merchantApi->verifyOrder($order);
 
-		$uri = new Uri("https://api.stage.klix.app/merchant/public/f6cef80b-92a4-4bc2-b611-7dc597f9ba60/orders/$orderId/verify");
+		$uri = new Uri("https://api.stage.klix.app/merchants/f6cef80b-92a4-4bc2-b611-7dc597f9ba60/orders/$orderId");
 		$this->requestMatched([
 			RequestMatchers::httpMethodIs('PUT'),
 			RequestMatchers::requestUriIs($uri),
@@ -96,7 +96,7 @@ class MerchantApiTest extends BaseApiClientTest
 
 		$merchantApi->rejectOrder($orderId, $orderRejection);
 
-		$uri = new Uri("https://api.stage.klix.app/merchant/public/f6cef80b-92a4-4bc2-b611-7dc597f9ba60/orders/$orderId/reject");
+		$uri = new Uri("https://api.stage.klix.app/merchants/f6cef80b-92a4-4bc2-b611-7dc597f9ba60/orders/$orderId");
 		$this->requestMatched([
 			RequestMatchers::httpMethodIs('DELETE'),
 			RequestMatchers::requestUriIs($uri),
