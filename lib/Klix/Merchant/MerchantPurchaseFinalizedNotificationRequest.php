@@ -9,7 +9,15 @@ class MerchantPurchaseFinalizedNotificationRequest extends Model
 	 */
 	public function getOrderId()
 	{
-		return new Customer($this->values['orderId']);
+		return $this->values['orderId'];
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getExternalOrderId()
+	{
+		return $this->values['externalOrderId'];
 	}
 
 	/**
@@ -17,6 +25,6 @@ class MerchantPurchaseFinalizedNotificationRequest extends Model
 	 */
 	public function getStatus()
 	{
-		return new Customer($this->values['status']);
+		return $this->values['status'];
 	}
 }
