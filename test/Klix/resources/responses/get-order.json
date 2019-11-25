@@ -1,4 +1,7 @@
 {
+  "id": "9482996d-d3b2-4518-84aa-d6649bad6e99",
+  "order_id": "362",
+  "status": "PENDING",
   "company": {
     "name": "XYZ",
     "address": "Republikas laukums 2a",
@@ -11,28 +14,43 @@
     "last_name": "Doe",
     "phone_number": "37120000000"
   },
-  "id": "9482996d-d3b2-4518-84aa-d6649bad6e99",
+  "amount": null,
+  "tax_amount": 18.22,
+  "total_amount": 105,
+  "items": [
+    {
+      "amount": 86.78,
+      "label": "Elektriskais z\u0101\u0123is Stiga SE 180 Q",
+      "tax_amount": 18.2238,
+      "total_amount": 105.0038,
+      "tax_rate": 0.21,
+      "order_item_id": "STIGASE180Q",
+      "quantity": 1,
+      "unit": "PIECE",
+      "type": "PHYSICAL_GOODS"
+    },
+    {
+      "amount": 0,
+      "label": "Piegāde",
+      "tax_amount": 0,
+      "total_amount": 0,
+      "tax_rate": 0.21,
+      "order_item_id": "DELIVERY",
+      "quantity": 1,
+      "unit": "PIECE",
+      "type": "UNKNOWN"
+    }
+  ],
+  "currency": "EUR",
   "merchant_urls": {
     "terms": "www.demo-shop.lv/terms-and-conditions",
     "place_order": "www.demo-shop.lv/api/orders",
     "verification": "www.demo-shop.lv/api/orders/verifications",
     "confirmation": "www.demo-shop.lv/api/orders/confirmations"
   },
-  "order_amount": 32,
-  "order_lines": [
-    {
-      "amount": 32,
-      "name": "PHILIPS matu fēns XR3857",
-      "quantity": 1,
-      "reference": "PHILIPSXR3857",
-      "tax_rate": 0.21,
-      "type": "PHYSICAL_GOODS",
-      "unit": "PIECE"
-    }
-  ],
-  "order_tax_amount": 6.72,
-  "purchase_currency": "EUR",
-  "shipment":  {
+  "shipping":  {
+    "type": "PICKUP_POINT",
+    "date": "2019-09-15",
     "method": {
       "id": "DPDPICKUP",
       "name": "DPD Pickup"
@@ -46,14 +64,11 @@
       "street": "Valdemāra iela 112"
     },
     "contact_phone": "37120000000",
-    "date": "2019-09-15",
     "pickup_point": {
       "name": "Paku Skapis Rimi Valdemārs",
       "external_id": "LV90007",
       "comments": "",
       "service_hours": "I-VII 00:00-24:00"
-    },
-    "type": "PICKUP_POINT"
-  },
-  "status": "PENDING"
+    }
+  }
 }

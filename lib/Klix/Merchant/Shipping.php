@@ -2,19 +2,19 @@
 
 namespace Klix\Merchant;
 
-class Shipment extends Model
+class Shipping extends Model
 {
 
 	/**
-	 * @return ShipmentMethod
+	 * @return ShippingMethod
 	 */
 	public function getMethod()
 	{
-		return new ShipmentMethod($this->values['method']);
+		return new ShippingMethod($this->values['method']);
 	}
 
 	/**
-	 * @param $shipmentMethod ShipmentMethod
+	 * @param $shipmentMethod ShippingMethod
 	 * @return $this
 	 */
 	public function setMethod($shipmentMethod)

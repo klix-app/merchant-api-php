@@ -2,7 +2,7 @@
 
 namespace Klix\Merchant;
 
-class ShipmentMethod extends Model
+class ShippingMethod extends Model
 {
 	/**
 	 * @return string
