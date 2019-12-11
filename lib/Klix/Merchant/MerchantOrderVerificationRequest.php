@@ -11,4 +11,12 @@ class MerchantOrderVerificationRequest extends Model
 	{
 		return $this->values['orderId'];
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getExternalOrderId()
+	{
+		return $this->values['externalOrderId'];
+	}
 }

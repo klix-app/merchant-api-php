@@ -27,4 +27,21 @@ class MerchantPurchaseFinalizedNotificationRequest extends Model
 	{
 		return $this->values['status'];
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getErrorMessage()
+	{
+		return $this->values['errorMessage'];
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getErrorCode()
+	{
+		return $this->values['errorCode'];
+	}
+
 }
