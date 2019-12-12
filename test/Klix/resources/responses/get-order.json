@@ -14,9 +14,21 @@
     "last_name": "Doe",
     "phone_number": "37120000000"
   },
+  "payment": {
+    "method": "CARD",
+    "status": "SUCCEEDED",
+    "card": {
+      "bin": "431422"
+    },
+    "error": {
+      "code": "RSW101",
+      "message": "Declined by issuer"
+    }
+  },
   "amount": null,
   "tax_amount": 18.22,
   "total_amount": 105,
+  "effective_amount": 95,
   "items": [
     {
       "amount": 86.78,

@@ -18,8 +18,7 @@ class MerchantApiTest extends BaseApiClientTest
 		$order = $merchantApi->getOrder($orderId);
 
 		$this->assertEquals($orderId, $order->getId());
-		$this->assertEquals('PENDING', $order->getStatus())
-		;
+		$this->assertEquals('PENDING', $order->getStatus());
 		$this->assertEquals('John', $order->getCustomer()->getFirstName());
 		$this->assertEquals('Doe', $order->getCustomer()->getLastName());
 		$this->assertEquals('john.doe@xyz.lv', $order->getCustomer()->getEmail());
@@ -33,6 +32,16 @@ class MerchantApiTest extends BaseApiClientTest
 		$this->assertEquals('362', $order->getOrderId());
 		$this->assertEquals(18.22, $order->getTaxAmount());
 		$this->assertEquals(105, $order->getTotalAmount());
+		$this->assertEquals(95, $order->getEffectiveAmount());
+
+		$this->assertNotNull($order->getPayment());
+		$this->assertEquals("CARD", $order->getPayment()->getMethod());
+		$this->assertEquals("SUCCEEDED", $order->getPayment()->getStatus());
+		$this->assertNotNull($order->getPayment()->getCard());
+		$this->assertEquals("431422", $order->getPayment()->getCard()->getBin());
+		$this->assertNotNull($order->getPayment()->getError());
+		$this->assertEquals("Declined by issuer", $order->getPayment()->getError()->getMessage());
+		$this->assertEquals("RSW101", $order->getPayment()->getError()->getCode());
 
 		$this->assertCount(2, $order->getItems());
 		$this->assertEquals(86.78, $order->getItems()[0]->getAmount());

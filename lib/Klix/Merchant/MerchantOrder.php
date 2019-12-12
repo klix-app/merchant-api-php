@@ -25,6 +25,24 @@ class MerchantOrder extends Model
 	/**
 	 * @return string
 	 */
+	public function getOrderId()
+	{
+		return $this->values['order_id'];
+	}
+
+	/**
+	 * @param string $orderId
+	 * @return $this
+	 */
+	public function setOrderId($orderId)
+	{
+		$this->values['order_id'] = $orderId;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
 	public function getStatus()
 	{
 		return $this->values['status'];
@@ -37,24 +55,6 @@ class MerchantOrder extends Model
 	public function setStatus($status)
 	{
 		$this->values['status'] = $status;
-		return $this;
-	}
-
-	/**
-	 * @return Customer
-	 */
-	public function getCustomer()
-	{
-		return new Customer($this->values['customer']);
-	}
-
-	/**
-	 * @param Customer $customer
-	 * @return $this
-	 */
-	public function setCustomer($customer)
-	{
-		$this->values['customer'] = $customer->values;
 		return $this;
 	}
 
@@ -77,20 +77,38 @@ class MerchantOrder extends Model
 	}
 
 	/**
-	 * @return string
+	 * @return Customer
 	 */
-	public function getOrderId()
+	public function getCustomer()
 	{
-		return $this->values['order_id'];
+		return new Customer($this->values['customer']);
 	}
 
 	/**
-	 * @param string $orderId
+	 * @param Customer $customer
 	 * @return $this
 	 */
-	public function setOrderId($orderId)
+	public function setCustomer($customer)
 	{
-		$this->values['order_id'] = $orderId;
+		$this->values['customer'] = $customer->values;
+		return $this;
+	}
+
+	/**
+	 * @return Payment
+	 */
+	public function getPayment()
+	{
+		return new Payment($this->values['payment']);
+	}
+
+	/**
+	 * @param Payment $payment
+	 * @return $this
+	 */
+	public function setPayment($payment)
+	{
+		$this->values['payment'] = $payment->values;
 		return $this;
 	}
 
@@ -109,6 +127,42 @@ class MerchantOrder extends Model
 	public function setTaxAmount($taxAmount)
 	{
 		$this->values['tax_amount'] = $taxAmount;
+		return $this;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getAmount()
+	{
+		return $this->values['amount'];
+	}
+
+	/**
+	 * @param float $amount
+	 * @return $this
+	 */
+	public function setAmount($amount)
+	{
+		$this->values['amount'] = $amount;
+		return $this;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getEffectiveAmount()
+	{
+		return $this->values['effective_amount'];
+	}
+
+	/**
+	 * @param float $effectiveAmount
+	 * @return $this
+	 */
+	public function setEffectiveAmount($effectiveAmount)
+	{
+		$this->values['effective_amount'] = $effectiveAmount;
 		return $this;
 	}
 
