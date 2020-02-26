@@ -2,7 +2,7 @@
 
 namespace Klix;
 
-class ApiConfigurationBuilder
+class KlixConfigurationBuilder
 {
 
 	/**
@@ -52,7 +52,7 @@ class ApiConfigurationBuilder
 	/**
 	 * @param string $baseUri
 	 *
-	 * @return ApiConfigurationBuilder
+	 * @return KlixConfigurationBuilder
 	 */
 	public function setBaseUri($baseUri)
 	{
@@ -63,7 +63,7 @@ class ApiConfigurationBuilder
 	/**
 	 * @param string $merchantId
 	 *
-	 * @return ApiConfigurationBuilder
+	 * @return KlixConfigurationBuilder
 	 */
 	public function setMerchantId($merchantId)
 	{
@@ -74,7 +74,7 @@ class ApiConfigurationBuilder
 	/**
 	 * @param string $apiKey
 	 *
-	 * @return ApiConfigurationBuilder
+	 * @return KlixConfigurationBuilder
 	 */
 	public function setApiKey($apiKey)
 	{
@@ -85,7 +85,7 @@ class ApiConfigurationBuilder
 	/**
 	 * @param string $privateKeyId
 	 *
-	 * @return ApiConfigurationBuilder
+	 * @return KlixConfigurationBuilder
 	 */
 	public function setPrivateKeyId($privateKeyId)
 	{
@@ -96,7 +96,7 @@ class ApiConfigurationBuilder
 	/**
 	 * @param string $privateKey
 	 *
-	 * @return ApiConfigurationBuilder
+	 * @return KlixConfigurationBuilder
 	 */
 	public function setPrivateKey($privateKey)
 	{
@@ -107,7 +107,7 @@ class ApiConfigurationBuilder
 	/**
 	 * @param string $providerPublicKey
 	 *
-	 * @return ApiConfigurationBuilder
+	 * @return KlixConfigurationBuilder
 	 */
 	public function setProviderPublicKey($providerPublicKey)
 	{
@@ -118,7 +118,7 @@ class ApiConfigurationBuilder
 	/**
 	 * @param bool $debugEnabled
 	 *
-	 * @return ApiConfigurationBuilder
+	 * @return KlixConfigurationBuilder
 	 */
 	public function setDebugEnabled($debugEnabled)
 	{
@@ -129,7 +129,7 @@ class ApiConfigurationBuilder
 	/**
 	 * @param string $debugFile
 	 *
-	 * @return ApiConfigurationBuilder
+	 * @return KlixConfigurationBuilder
 	 */
 	public function setDebugFile($debugFile)
 	{
@@ -138,11 +138,11 @@ class ApiConfigurationBuilder
 	}
 
 	/**
-	 * @return ApiConfiguration
+	 * @return KlixConfiguration
 	 */
 	public function build()
 	{
-		return new ApiConfiguration(
+		return new KlixConfiguration(
 			$this->baseUri,
 			$this->merchantId,
 			$this->apiKey,
@@ -153,6 +153,6 @@ class ApiConfigurationBuilder
 	}
 
 	public static function builder() {
-		return new ApiConfigurationBuilder();
+		return new KlixConfigurationBuilder();
 	}
 }

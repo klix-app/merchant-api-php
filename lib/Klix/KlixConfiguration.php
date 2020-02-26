@@ -2,7 +2,7 @@
 
 namespace Klix;
 
-class ApiConfiguration
+class KlixConfiguration
 {
 	const API_BASE_URL = "https://api.klix.app";
 
@@ -58,9 +58,9 @@ class ApiConfiguration
 	 */
 	public function __construct($baseUri, $merchantId, $apiKey, $privateKeyId, $privateKey, $providerPublicKey)
 	{
-		$this->baseUri = $this->checkIfPresent($baseUri, 'baseUri');
-		$this->merchantId = $this->checkIfPresent($merchantId, 'merchantId');
-		$this->apiKey = $this->checkIfPresent($apiKey, 'apiKey');
+		$this->baseUri = $baseUri;
+		$this->merchantId = $merchantId;
+		$this->apiKey = $apiKey;
 		$this->privateKeyId = $this->checkIfPresent($privateKeyId, 'privateKeyId');
 		$this->privateKey = $this->checkIfPresent($privateKey, 'privateKey');
 		$this->providerPublicKey = $this->checkIfPresent($providerPublicKey, 'providerPublicKey');

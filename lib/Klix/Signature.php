@@ -11,7 +11,7 @@ class Signature
 
 	/**
 	 * @param $arr array
-	 * @param $apiConfiguration ApiConfiguration
+	 * @param $apiConfiguration KlixConfiguration
 	 * @return string signed JWT
 	 */
 	static function sign($arr, $apiConfiguration)
@@ -22,9 +22,9 @@ class Signature
 
 	/**
 	 * @param $signedContent string
-	 * @param $apiConfiguration ApiConfiguration
-	 * @throws SignatureValidationFailedException
+	 * @param $apiConfiguration KlixConfiguration
 	 * @return array
+	 *@throws SignatureValidationFailedException
 	 */
 	static function decode($signedContent, $apiConfiguration)
 	{

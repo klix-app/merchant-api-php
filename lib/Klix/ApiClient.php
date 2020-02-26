@@ -15,7 +15,7 @@ class ApiClient
 {
 
 	/**
-	 * @var ApiConfiguration
+	 * @var KlixConfiguration
 	 */
 	protected $apiConfiguration;
 
@@ -24,7 +24,7 @@ class ApiClient
 	 */
 	protected $httpClient;
 
-	public function __construct(ApiConfiguration $apiConfiguration, ClientInterface $httpClient = null)
+	public function __construct(KlixConfiguration $apiConfiguration, ClientInterface $httpClient = null)
 	{
 		$this->apiConfiguration = $apiConfiguration;
 		$this->httpClient = $httpClient === null ? new Client() : $httpClient;

@@ -2,7 +2,7 @@
 
 namespace Klix\Merchant;
 
-use Klix\ApiConfiguration;
+use Klix\KlixConfiguration;
 use Klix\Signature;
 use Klix\SignatureValidationFailedException;
 
@@ -11,9 +11,9 @@ class RequestDecoder
 
 	/**
 	 * @param $signedRequestContent string
-	 * @param $apiConfiguration ApiConfiguration
-	 * @throws SignatureValidationFailedException
+	 * @param $apiConfiguration KlixConfiguration
 	 * @return MerchantOrderVerificationRequest
+	 *@throws SignatureValidationFailedException
 	 */
 	public static function decodeOrderVerificationRequest($signedRequestContent, $apiConfiguration)
 	{
@@ -26,9 +26,9 @@ class RequestDecoder
 
 	/**
 	 * @param $signedRequestContent string
-	 * @param $apiConfiguration ApiConfiguration
-	 * @throws SignatureValidationFailedException
+	 * @param $apiConfiguration KlixConfiguration
 	 * @return MerchantPurchaseFinalizedNotificationRequest
+	 *@throws SignatureValidationFailedException
 	 */
 	public static function decodePurchaseFinalizedNotificationRequest($signedRequestContent, $apiConfiguration)
 	{
@@ -41,10 +41,10 @@ class RequestDecoder
 
 	/**
 	 * @param $signedRequestContent string
-	 * @param $apiConfiguration ApiConfiguration
+	 * @param $apiConfiguration KlixConfiguration
 	 * @param $objectClass string
-	 * @throws SignatureValidationFailedException
 	 * @return mixed
+	 *@throws SignatureValidationFailedException
 	 */
 	protected static function decode($signedRequestContent, $apiConfiguration, $objectClass)
 	{

@@ -14,7 +14,7 @@ abstract class BaseApiClientTest extends PHPUnit_Framework_TestCase
 {
 
 	/**
-	 * @var ApiConfiguration
+	 * @var KlixConfiguration
 	 */
 	protected $apiConfiguration;
 
@@ -31,8 +31,8 @@ abstract class BaseApiClientTest extends PHPUnit_Framework_TestCase
 
 	protected function createApiConfiguration()
 	{
-		$this->apiConfiguration = ApiConfigurationBuilder::builder()
-			->setBaseUri(ApiConfiguration::TEST_BASE_URL)
+		$this->apiConfiguration = KlixConfigurationBuilder::builder()
+			->setBaseUri(KlixConfiguration::TEST_BASE_URL)
 			->setApiKey('52a49f81-0869-40a6-8dde-96a624e61b54')
 			->setMerchantId('f6cef80b-92a4-4bc2-b611-7dc597f9ba60')
 			->setPrivateKey($this->getTestResourceFileContents('keys/merchant_private_key.pem'))

@@ -1,9 +1,9 @@
 <?php
 
-namespace Klix\Merchant;
+namespace Klix;
 
 
-use Klix\BaseApiClientTest;
+use Klix\Merchant\RequestDecoder;
 
 class RequestDecoderTest extends BaseApiClientTest
 {

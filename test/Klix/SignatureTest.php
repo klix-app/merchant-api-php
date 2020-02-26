@@ -30,7 +30,7 @@ class SignatureTest extends BaseApiClientTest
 		$jwtPayload = Signature::decode($signedJwt, $this->apiConfiguration);
 		$verificationRequest = new MerchantOrderVerificationRequest($jwtPayload);
 
-		echo $verificationRequest->getOrderId();
+		self::assertEquals("6737d6a5-231e-48df-8570-fe49859f7d7d", $verificationRequest->getOrderId());
 	}
 
 	public function testInvalidSignedRequestDecoding()
