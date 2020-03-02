@@ -41,6 +41,24 @@ class Payment extends Model
     }
 
 	/**
+	 * @return string
+	 */
+	public function getAccountStatementReference()
+	{
+		return $this->values['accountStatementReference'];
+	}
+
+	/**
+	 * @param $accountStatementReference string
+	 * @return $this
+	 */
+	public function setAccountStatementReference($accountStatementReference)
+	{
+		$this->values['accountStatementReference'] = $accountStatementReference;
+		return $this;
+	}
+
+	/**
 	 * @return Card
 	 */
 	public function getCard()
