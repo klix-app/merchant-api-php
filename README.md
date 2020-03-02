@@ -152,11 +152,19 @@ Upon purchase completion Klix back-end will send purchase completed callback to 
 
 ```php
 <?php
-use Klix\Merchant\RequestDecoder;
+use Klix\Callback\ProviderSignatureValidator;
+use Klix\Callback\ProviderCallbackRequestDecoder;
 
-$requestBodyString = //obtain request body
-$purchaseFinalizedNotificationRequest = RequestDecoder::decodePurchaseFinalizedNotificationRequest($requestBodyString, $apiConfiguration);
-$orderId = $purchaseFinalizedNotificationRequest.getOrderId();
+$requestBodyString = // read request body
+$signature = // read request header "X-Klix-Signature" value 
+$validator = new ProviderSignatureValidator($apiConfiguration);
+$decoder = new ProviderCallbackRequestDecoder($validator);
+
+$merchantOrder = $decoder->decodePurchaseFinalizedRequest($requestBodyString, $signature);
+
+echo $merchantOrder->getId();
+echo $merchantOrder->getStatus();
+
 ?>
 ```
 
