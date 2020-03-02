@@ -166,6 +166,8 @@ Besides order authorization using order signature provided by merchant Klix supp
 
 ## Running tests
 
+Check out library [unit tests](test/Klix) for more examples of Klix PHP library API usage. Command to execute all tests:
+
 ```bash
 composer unit
 ```
