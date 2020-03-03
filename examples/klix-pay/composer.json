@@ -1,0 +1,11 @@
+{
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/klix-app/merchant-api-php.git"
+    }
+  ],
+  "require": {
+    "klix-app/merchant-api-php": "v1.1.1"
+  }
+}
