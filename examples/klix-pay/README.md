@@ -2,7 +2,7 @@
 
 * Run ```composer install```
 * Create a directory /Users/{YourUserName}/Sites
-* Do following steps [Apache web-server set-up](https://websitebeaver.com/set-up-localhost-on-macos-high-sierra-apache-mysql-and-php-7-with-sslhttps):
+* Do the following steps from [Apache web-server set-up instructions](https://websitebeaver.com/set-up-localhost-on-macos-high-sierra-apache-mysql-and-php-7-with-sslhttps):
    * Enable php on built-in Apache web-server
    * Set the Apache root path to /Users/{YourUserName}/Sites
 * Copy this directory contents to Apache web-server root folder: 
