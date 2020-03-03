@@ -61,7 +61,7 @@ class KlixConfiguration
 		$this->baseUri = $baseUri;
 		$this->merchantId = $merchantId;
 		$this->apiKey = $apiKey;
-		$this->privateKeyId = $this->checkIfPresent($privateKeyId, 'privateKeyId');
+		$this->privateKeyId = $privateKeyId;
 		$this->privateKey = $this->checkIfPresent($privateKey, 'privateKey');
 		$this->providerPublicKey = $this->checkIfPresent($providerPublicKey, 'providerPublicKey');
 	}

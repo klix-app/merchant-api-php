@@ -12,12 +12,13 @@ Merchant order authorization via callback requires three additional fiels to be 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-use Klix\ApiConfigurationBuilder;
+use Klix\KlixConfigurationBuilder;
+use Klix\KlixConfiguration;
 use Klix\ApiClient;
 use Klix\Merchant\MerchantApi;
 
 $klixConfiguration = KlixConfigurationBuilder::builder()
-    ->setBaseUri(ApiConfiguration::TEST_BASE_URL)
+    ->setBaseUri(KlixConfiguration::TEST_BASE_URL)
     ->setApiKey('52a49f81-0869-40a6-8dde-96a624e61b54')
     ->setMerchantId('f6cef80b-92a4-4bc2-b611-7dc597f9ba60')
     ->setPrivateKey(file_get_contents('resources/keys/merchant_private_key.pem'))

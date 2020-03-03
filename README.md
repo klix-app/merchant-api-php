@@ -44,9 +44,9 @@ require_once('/path/to/merchant-api-php/vendor/autoload.php');
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-use Klix\ApiConfigurationBuilder;
+use Klix\KlixConfigurationBuilder;
 
-$apiConfiguration = ApiConfigurationBuilder::builder()
+$apiConfiguration = KlixConfigurationBuilder::builder()
     ->setPrivateKey(file_get_contents('resources/keys/merchant_private_key.pem'))
     ->setPrivateKeyId('52a49f81-0869-40a6-8dde-96a624e61b54')
     ->setProviderPublicKey(file_get_contents('resources/keys/provider_public_key.pem'))
