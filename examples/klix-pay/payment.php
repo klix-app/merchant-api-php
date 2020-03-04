@@ -9,7 +9,7 @@ use Klix\Widget\OrderItem;
 use Klix\Widget\WidgetConfiguration;
 use Klix\Widget\WidgetConfigurationSigner;
 
-define("CONFIG", parse_ini_file("./config_stage.ini"));
+define("CONFIG", parse_ini_file("./config_test_env.ini"));
 
 function printKlixWidget()
 {
@@ -46,21 +46,16 @@ function printKlixWidget()
 <!DOCTYPE html>
 
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cart</title>
+		<script type="module" src="<?php echo CONFIG['klix_js_lib_module'] ?>"></script>
+		<script nomodule="" src="<?php echo CONFIG['klix_js_lib_nomodule'] ?>"></script>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Cart</title>
-
-    <script type="module" src="<?php echo CONFIG['klix_js_lib_module'] ?>"></script>
-    <script nomodule="" src="<?php echo CONFIG['klix_js_lib_nomodule'] ?>"></script>
-</head>
-
-<body>
-<h1>Merchant Site with Klix-Pay widget</h1>
-<br/>
-
-<?php printKlixWidget(); ?>
-
-</body>
-
+	<body>
+		<h1>Merchant Site with Klix-Pay widget</h1>
+		<br/>
+		<?php printKlixWidget(); ?>
+	</body>
 </html>

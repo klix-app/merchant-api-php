@@ -28,43 +28,38 @@ function gen_uuid()
 <!DOCTYPE html>
 
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cart</title>
+		<style>
+			input {
+				display: block;
+				font-size: medium;
+				width: 300px
+			}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Cart</title>
-    <style>
-        input {
-            display: block;
-            font-size: medium;
-            width: 300px
-        }
+			label {
+				display: block
+			}
 
-        label {
-            display: block
-        }
+			button {
+				font-size: medium
+			}
+		</style>
+	</head>
 
-        button {
-            font-size: medium
-        }
-    </style>
-</head>
-
-<body>
-
-<form style="font-size: large" id="returnForm" action="payment.php" method="post">
-    <input type="hidden" hidden="hidden" readonly="readonly" name="language" id="language" value="lv"/>
-    <input type="hidden" hidden="hidden" readonly="readonly" name="orderId" id="orderId"
-           value="<?php echo gen_uuid(); ?>"/>
-    <label for="price">Price:</label>
-    <input type="text" name="price" id="price" value="5.12">
-    <label for="currency">Currency:</label>
-    <input type="text" name="currency" id="currency" value="EUR">
-    <label for="label">Description:</label>
-    <input type="text" name="label" id="label" value="Some product">
-    <button type="submit">Pay with Klix</button>
-</form>
-
-
-</body>
-
+	<body>
+		<form style="font-size: large" id="returnForm" action="payment.php" method="post">
+			<input type="hidden" hidden="hidden" readonly="readonly" name="language" id="language" value="lv"/>
+			<input type="hidden" hidden="hidden" readonly="readonly" name="orderId" id="orderId"
+				   value="<?php echo gen_uuid(); ?>"/>
+			<label for="price">Price:</label>
+			<input type="text" name="price" id="price" value="5.12">
+			<label for="currency">Currency:</label>
+			<input type="text" name="currency" id="currency" value="EUR">
+			<label for="label">Description:</label>
+			<input type="text" name="label" id="label" value="Some product">
+			<button type="submit">Pay with Klix</button>
+		</form>
+	</body>
 </html>
