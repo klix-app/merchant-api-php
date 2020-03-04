@@ -1,0 +1,5 @@
+{
+  "require": {
+    "klix-app/merchant-api-php": "*@dev"
+  }
+}
