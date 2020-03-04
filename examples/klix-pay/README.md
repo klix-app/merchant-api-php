@@ -2,7 +2,7 @@
 
 ## Set up on MacOS
 
-* Navigate to [this directory (examples/klix-pay)](/) directory and run ```composer install```
+* Navigate to [this directory (examples/klix-pay)](/examples/klix-pay) directory and run ```composer install```
 * Create a directory /Users/{YourUserName}/Sites
 * Do the following steps from [Apache web-server set-up instructions](https://websitebeaver.com/set-up-localhost-on-macos-high-sierra-apache-mysql-and-php-7-with-sslhttps):
   * Enable php on built-in Apache web-server

@@ -166,6 +166,11 @@ echo $merchantOrder->getStatus();
 
 Besides order authorization using order signature provided by merchant Klix supports another order authorization method using merchant's [callback](callback-validation.md) for more advanced use cases.
 
+
+## Examples
+
+See library usage example in [Klix Pay](/examples/klix-pay) scenario.
+
 ## Running tests
 
 Check out library [unit tests](test/Klix) for more examples of Klix PHP library API usage. Command to execute all tests:
