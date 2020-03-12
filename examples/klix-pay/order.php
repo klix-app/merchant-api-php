@@ -49,7 +49,7 @@ function gen_uuid()
 	</head>
 
 	<body>
-		<form style="font-size: large" id="returnForm" action="payment.php" method="post">
+		<form style="font-size: large" id="returnForm" action="checkout.php" method="post">
 			<input type="hidden" hidden="hidden" readonly="readonly" name="language" id="language" value="lv"/>
 			<input type="hidden" hidden="hidden" readonly="readonly" name="orderId" id="orderId"
 				   value="<?php echo gen_uuid(); ?>"/>

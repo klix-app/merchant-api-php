@@ -28,7 +28,7 @@ function printKlixWidget()
         ->setOrderId($_POST["orderId"])
         ->addItem($orderItem);
     $widgetConfiguration = WidgetConfiguration::create()
-        ->setWidgetId(CONFIG['payment_widget_id'])
+        ->setWidgetId(CONFIG['widget_id'])
         ->setLanguage($_POST["language"])
         ->setOrder($order);
 
