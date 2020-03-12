@@ -115,4 +115,52 @@ class ShippingOption extends JsonSerializableObject implements SignatureSource
 		$this->excludeFromOrderIfFree = $excludeFromOrderIfFree;
 		return $this;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getAmount()
+	{
+		return $this->amount;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCurrency()
+	{
+		return $this->currency;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getTaxRate()
+	{
+		return $this->taxRate;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTitle()
+	{
+		return $this->title;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isExcludeFromOrderIfFree()
+	{
+		return $this->excludeFromOrderIfFree;
+	}
 }
