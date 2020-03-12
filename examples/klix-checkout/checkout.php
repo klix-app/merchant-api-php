@@ -33,7 +33,7 @@ function printKlixWidget()
     $checkoutWidget = $checkoutWidgetFactory->create($widgetConfiguration);
     $htmlRepresentation = $checkoutWidget->getHtmlRepresentation();
     $signatureSource = $widgetConfiguration->toSignatureSource();
-	echo "Signature source: <!--$signatureSource-->";
+	echo "<!--Signature source: $signatureSource-->";
     echo $htmlRepresentation;
 }
 
