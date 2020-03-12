@@ -54,8 +54,14 @@ class WidgetConfiguration implements SignatureSource
 		return json_encode($this->order);
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function isHtmlAttributeConfiguration() {
-		return !($this->order->hasConstraints() || $this->order->hasShippingOptions() || $this->order->getOrderItemCount() > 1);
+		return !($this->order->hasConstraints() ||
+			$this->order->hasShippingOptions() ||
+			$this->order->getOrderItemCount() > 1 ||
+			($this->order->getOrderItemCount() == 1 && $this->order->getOrderItem(0)->hasJsonConfigurationAttributes()));
 	}
 
 	/**

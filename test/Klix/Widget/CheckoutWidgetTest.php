@@ -48,6 +48,25 @@ class CheckoutWidgetTest extends AbstractWidgetConfigurationTest
 		self::assertEquals($widgetConfiguration->getCertificateName(), $xml->attributes()["certificate-name"]);
 		self::assertEquals($signature, $xml->attributes()["signature"]);
 		self::assertEquals($widgetConfiguration->getOrderJson(), $xml->attributes()["order"]);
+		self::assertNull($xml->attributes()["amount"]);
+	}
+
+	public function testJsonConfigWidgetHtmlGenerationInCaseOfSingleOrderLineWithId() {
+		$signature = "some-signature";
+		$widgetConfiguration = $this->getSingleOrderItemConfiguration();
+		$widgetConfiguration->getOrder()->getFirstItem()->setOrderItemId("ff713414-56f9-11ea-82b4-0242ac130003");
+		$checkoutWidget = new CheckoutWidget($widgetConfiguration, $signature);
+
+		$htmlRepresentation = $checkoutWidget->getHtmlRepresentation();
+
+		$xml = simplexml_load_string($htmlRepresentation);
+		self::assertEquals("klix-checkout", $xml->getName());
+		self::assertEquals($widgetConfiguration->getWidgetId(), $xml->attributes()["widget-id"]);
+		self::assertEquals($widgetConfiguration->getLanguage(), $xml->attributes()["language"]);
+		self::assertEquals($widgetConfiguration->getCertificateName(), $xml->attributes()["certificate-name"]);
+		self::assertEquals($signature, $xml->attributes()["signature"]);
+		self::assertEquals($widgetConfiguration->getOrderJson(), $xml->attributes()["order"]);
+		self::assertNull($xml->attributes()["amount"]);
 	}
 
 	/**
@@ -59,7 +78,6 @@ class CheckoutWidgetTest extends AbstractWidgetConfigurationTest
 			->setCount(2)
 			->setCurrency("EUR")
 			->setLabel("Vacuum cleaner TC31")
-			->setOrderItemId("ff713414-56f9-11ea-82b4-0242ac130003")
 			->setTaxRate(0.21)
 			->setUnit("PIECE");
 		$order = Order::create()

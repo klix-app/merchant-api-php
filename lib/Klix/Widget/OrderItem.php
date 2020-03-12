@@ -66,6 +66,14 @@ class OrderItem extends JsonSerializableObject implements SignatureSource
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function hasJsonConfigurationAttributes()
+	{
+		return $this->orderItemId != null;
+	}
+
+	/**
 	 * @param float $amount
 	 * @return $this
 	 */

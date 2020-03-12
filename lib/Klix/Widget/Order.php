@@ -64,6 +64,14 @@ class Order extends JsonSerializableObject implements SignatureSource
 	}
 
 	/**
+	 * @param integer $index
+	 * @return OrderItem
+	 */
+	public function getOrderItem($index) {
+		return $this->items[$index];
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function hasShippingOptions() {
