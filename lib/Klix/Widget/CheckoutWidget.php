@@ -44,7 +44,7 @@ class CheckoutWidget
 			$representation .= $this->getHtmlAttribute('count', $orderItem->getCount());
 			$representation .= $this->getHtmlAttribute('unit', $orderItem->getUnit());
 			$representation .= $this->getHtmlAttribute('label', $orderItem->getLabel());
-			$representation .= $this->getHtmlAttribute('taxRate', $orderItem->getTaxRate());
+			$representation .= $this->getHtmlAttribute('tax-rate', $orderItem->getTaxRate());
 		} else {
 			$representation .= $this->getHtmlAttribute('order', $this->widgetConfiguration->getOrderJson());
 		}

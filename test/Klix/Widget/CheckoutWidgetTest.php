@@ -31,7 +31,7 @@ class CheckoutWidgetTest extends AbstractWidgetConfigurationTest
 		self::assertEquals($widgetConfiguration->getOrder()->getFirstItem()->getCount(), (integer) $xml->attributes()["count"]);
 		self::assertEquals($widgetConfiguration->getOrder()->getFirstItem()->getUnit(), $xml->attributes()["unit"]);
 		self::assertEquals($widgetConfiguration->getOrder()->getFirstItem()->getLabel(), $xml->attributes()["label"]);
-		self::assertEquals($widgetConfiguration->getOrder()->getFirstItem()->getTaxRate(), (float) $xml->attributes()["taxRate"]);
+		self::assertEquals($widgetConfiguration->getOrder()->getFirstItem()->getTaxRate(), (float) $xml->attributes()["tax-rate"]);
 	}
 
 	public function testJsonConfigWidgetHtmlGeneration() {
