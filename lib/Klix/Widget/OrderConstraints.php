@@ -4,7 +4,7 @@
 namespace Klix\Widget;
 
 
-class OrderConstraints extends JsonSerializableObject implements SignatureSource
+class OrderConstraints extends JsonSerializableObject
 {
 
 	use SignatureSourceFieldFormatter;

@@ -36,7 +36,9 @@ class CheckoutWidget
 			. $this->getHtmlAttribute('language', $this->widgetConfiguration->getLanguage())
 			. $this->getHtmlAttribute('certificate-name', $this->widgetConfiguration->getCertificateName())
 			. $this->getHtmlAttribute('signature', $this->signature);
-		if ($this->widgetConfiguration->isHtmlAttributeConfiguration()) {
+		if ($this->widgetConfiguration->isJsonConfiguration()) {
+			$representation .= $this->getHtmlAttribute('order', $this->widgetConfiguration->getOrderJson());
+		} else {
 			$representation .= $this->getHtmlAttribute('order-id', $this->widgetConfiguration->getOrder()->getOrderId());
 			$orderItem = $this->widgetConfiguration->getOrder()->getFirstItem();
 			$representation .= $this->getHtmlAttribute('amount', $orderItem->getAmount());
@@ -45,8 +47,6 @@ class CheckoutWidget
 			$representation .= $this->getHtmlAttribute('unit', $orderItem->getUnit());
 			$representation .= $this->getHtmlAttribute('label', $orderItem->getLabel());
 			$representation .= $this->getHtmlAttribute('tax-rate', $orderItem->getTaxRate());
-		} else {
-			$representation .= $this->getHtmlAttribute('order', $this->widgetConfiguration->getOrderJson());
 		}
 		$representation .= '></klix-checkout>';
 		return $representation;

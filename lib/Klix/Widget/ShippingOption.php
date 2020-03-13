@@ -4,7 +4,7 @@
 namespace Klix\Widget;
 
 
-class ShippingOption extends JsonSerializableObject implements SignatureSource
+class ShippingOption extends JsonSerializableObject
 {
 
 	use SignatureSourceFieldFormatter;
@@ -35,7 +35,7 @@ class ShippingOption extends JsonSerializableObject implements SignatureSource
 	protected $title;
 
 	/**
-	 * @var boolean
+	 * @var bool
 	 */
 	protected $excludeFromOrderIfFree;
 

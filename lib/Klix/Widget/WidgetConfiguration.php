@@ -4,7 +4,7 @@
 namespace Klix\Widget;
 
 
-class WidgetConfiguration implements SignatureSource
+class WidgetConfiguration
 {
 
 	use SignatureSourceFieldFormatter;
@@ -57,11 +57,8 @@ class WidgetConfiguration implements SignatureSource
 	/**
 	 * @return bool
 	 */
-	public function isHtmlAttributeConfiguration() {
-		return !($this->order->hasConstraints() ||
-			$this->order->hasShippingOptions() ||
-			$this->order->getOrderItemCount() > 1 ||
-			($this->order->getOrderItemCount() == 1 && $this->order->getOrderItem(0)->hasJsonConfigurationAttributes()));
+	public function isJsonConfiguration() {
+		return $this->order->isJsonConfiguration();
 	}
 
 	/**

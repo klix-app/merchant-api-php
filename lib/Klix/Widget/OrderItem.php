@@ -4,7 +4,7 @@
 namespace Klix\Widget;
 
 
-class OrderItem extends JsonSerializableObject implements SignatureSource
+class OrderItem extends JsonSerializableObject
 {
 
 	use SignatureSourceFieldFormatter;
@@ -52,9 +52,10 @@ class OrderItem extends JsonSerializableObject implements SignatureSource
 	}
 
 	/**
+	 * @param bool $isJsonConfiguration
 	 * @return string
 	 */
-	public function toSignatureSource()
+	public function toSignatureSource($isJsonConfiguration)
 	{
 		return $this->amountToString($this->amount)
 			. $this->nullToEmptyString($this->currency)
@@ -62,13 +63,13 @@ class OrderItem extends JsonSerializableObject implements SignatureSource
 			. $this->floatToString($this->count, 3)
 			. $this->nullToEmptyString($this->unit)
 			. $this->amountToString($this->taxRate)
-			. $this->nullToEmptyString($this->orderItemId);
+			. ($isJsonConfiguration ? $this->nullToEmptyString($this->orderItemId) : "");
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function hasJsonConfigurationAttributes()
+	public function isJsonConfiguration()
 	{
 		return $this->orderItemId != null;
 	}

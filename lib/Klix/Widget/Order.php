@@ -4,7 +4,7 @@
 namespace Klix\Widget;
 
 
-class Order extends JsonSerializableObject implements SignatureSource
+class Order extends JsonSerializableObject
 {
 
 	use SignatureSourceFieldFormatter;
@@ -41,9 +41,10 @@ class Order extends JsonSerializableObject implements SignatureSource
 	 */
 	public function toSignatureSource()
 	{
+		$isJsonConfiguration = self::isJsonConfiguration();
 		$signatureSource = $this->orderId;
 		foreach ($this->items as $item) {
-			$signatureSource .= $item->toSignatureSource();
+			$signatureSource .= $item->toSignatureSource($isJsonConfiguration);
 		}
 		if ($this->shippingOptions != null) {
 			foreach ($this->shippingOptions as $shippingOption) {
@@ -57,9 +58,19 @@ class Order extends JsonSerializableObject implements SignatureSource
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function isJsonConfiguration() {
+		return self::hasConstraints() ||
+			self::hasShippingOptions() ||
+			self::getOrderItemCount() > 1 ||
+			(self::getOrderItemCount() == 1 && self::getOrderItem(0)->isJsonConfiguration());
+	}
+
+	/**
 	 * @return int
 	 */
-	public function getOrderItemCount() {
+	private function getOrderItemCount() {
 		return sizeof($this->items);
 	}
 
@@ -67,21 +78,21 @@ class Order extends JsonSerializableObject implements SignatureSource
 	 * @param integer $index
 	 * @return OrderItem
 	 */
-	public function getOrderItem($index) {
+	private function getOrderItem($index) {
 		return $this->items[$index];
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function hasShippingOptions() {
+	private function hasShippingOptions() {
 		return $this->shippingOptions !== null && sizeof($this->shippingOptions) > 0;
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function hasConstraints() {
+	private function hasConstraints() {
 		return $this->constraints !== null;
 	}
 
