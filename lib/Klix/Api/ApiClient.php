@@ -10,6 +10,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Klix\Api\Signing\RequestSigner;
 use Klix\Api\Signing\RequestSignerInterface;
+use Klix\ApiException;
 use Klix\KlixConfiguration;
 use Klix\ObjectSerializer;
 use Psr\Http\Message\RequestInterface;
