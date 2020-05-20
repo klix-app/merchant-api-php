@@ -1,6 +1,6 @@
 <?php
 
-namespace Klix;
+namespace Klix\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -8,6 +8,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Klix\Api\Signing\RequestSigner;
+use Klix\Api\Signing\RequestSignerInterface;
+use Klix\KlixConfiguration;
+use Klix\ObjectSerializer;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
@@ -24,10 +29,16 @@ class ApiClient
 	 */
 	protected $httpClient;
 
+	/**
+	 * @var RequestSignerInterface
+	 */
+	protected $requestSigner;
+
 	public function __construct(KlixConfiguration $apiConfiguration, ClientInterface $httpClient = null)
 	{
 		$this->apiConfiguration = $apiConfiguration;
 		$this->httpClient = $httpClient === null ? new Client() : $httpClient;
+		$this->requestSigner = new RequestSigner($apiConfiguration);
 	}
 
 	/**
@@ -36,26 +47,25 @@ class ApiClient
 	 * @param string method
 	 * @param string resourcePathTemplate
 	 * @param array pathVariables
-	 * @param mixed[] $requestBody
+	 * @param mixed[] $requestBodyArr
 	 *
 	 * @return Request
 	 */
-	public function createRequest($method, $resourcePathTemplate, $pathVariables, $requestBody = null)
+	public function createRequest($method, $resourcePathTemplate, $pathVariables, $requestBodyArr = null)
 	{
 		$headers = [
-			'Content-Type' => 'application/json',
 			'Accept' => 'application/json',
-			'User-Agent' => 'Klix/1.0.0/php',
-			'X-KLIX-Api-Key' => $this->apiConfiguration->getApiKey(),
+			'User-Agent' => 'merchant-api-php/2.x.x'
 		];
-		$signedRequestBody = $requestBody === null ? null : Signature::sign($requestBody, $this->apiConfiguration);
 		$resourcePath = $this->replacePathVariables($resourcePathTemplate, $pathVariables);
-		return new Request(
+		$requestBodyJson = $requestBodyArr !== null ? json_encode($requestBodyArr) : null;
+		$request = new Request(
 			$method,
 			$this->apiConfiguration->getBaseUri() . $resourcePath,
 			$headers,
-			$signedRequestBody
+			$requestBodyJson
 		);
+		return $this->requestSigner->sign($request);
 	}
 
 	protected function replacePathVariables($template, $variables)
@@ -133,11 +143,11 @@ class ApiClient
 	}
 
 	/**
-	 * @param $request Request
+	 * @param $request RequestInterface
 	 * @param $response ResponseInterface
 	 * @throws ApiException
 	 */
-	protected function checkResponseStatusCode($request, $response) {
+	protected function checkResponseStatusCode(RequestInterface $request, ResponseInterface $response) {
 		$statusCode = $response->getStatusCode();
 		if ($statusCode < 200 || $statusCode > 299) {
 			throw new ApiException(
@@ -151,5 +161,13 @@ class ApiClient
 				$response->getBody()
 			);
 		}
+	}
+
+	/**
+	 * @param RequestInterface $request
+	 * @return bool
+	 */
+	public function isSignatureValid(RequestInterface $request) {
+		return $this->requestSigner->isValid($request);
 	}
 }

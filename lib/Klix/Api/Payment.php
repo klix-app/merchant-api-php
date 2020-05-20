@@ -1,6 +1,6 @@
 <?php
 
-namespace Klix\Merchant;
+namespace Klix\Api;
 
 class Payment extends Model
 {

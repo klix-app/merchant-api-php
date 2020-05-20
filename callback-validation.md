@@ -19,7 +19,6 @@ use Klix\Merchant\MerchantApi;
 
 $klixConfiguration = KlixConfigurationBuilder::builder()
     ->setBaseUri(KlixConfiguration::TEST_BASE_URL)
-    ->setApiKey('52a49f81-0869-40a6-8dde-96a624e61b54')
     ->setMerchantId('f6cef80b-92a4-4bc2-b611-7dc597f9ba60')
     ->setPrivateKey(file_get_contents('resources/keys/merchant_private_key.pem'))
     ->setPrivateKeyId('52a49f81-0869-40a6-8dde-96a624e61b54')

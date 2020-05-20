@@ -4,7 +4,7 @@
 namespace Klix\Callback;
 
 
-use Klix\Merchant\MerchantOrder;
+use Klix\Api\MerchantOrder;
 use Klix\SignatureValidationFailedException;
 
 class ProviderCallbackRequestDecoder
@@ -30,7 +30,7 @@ class ProviderCallbackRequestDecoder
 	 */
 	public function decodePurchaseFinalizedRequest($payload, $signature)
 	{
-		return $this->decodeRequest($payload, $signature, 'Klix\Merchant\MerchantOrder');
+		return $this->decodeRequest($payload, $signature, 'Klix\Api\MerchantOrder');
 	}
 
 	/**

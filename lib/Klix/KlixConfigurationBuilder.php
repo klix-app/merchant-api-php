@@ -18,11 +18,6 @@ class KlixConfigurationBuilder
 	/**
 	 * @var string
 	 */
-	protected $apiKey;
-
-	/**
-	 * @var string
-	 */
 	protected $privateKeyId;
 
 	/**
@@ -68,17 +63,6 @@ class KlixConfigurationBuilder
 	public function setMerchantId($merchantId)
 	{
 		$this->merchantId = $merchantId;
-		return $this;
-	}
-
-	/**
-	 * @param string $apiKey
-	 *
-	 * @return KlixConfigurationBuilder
-	 */
-	public function setApiKey($apiKey)
-	{
-		$this->apiKey = $apiKey;
 		return $this;
 	}
 
@@ -145,7 +129,6 @@ class KlixConfigurationBuilder
 		return new KlixConfiguration(
 			$this->baseUri,
 			$this->merchantId,
-			$this->apiKey,
 			$this->privateKeyId,
 			$this->privateKey,
 			$this->providerPublicKey

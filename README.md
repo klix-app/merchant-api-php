@@ -142,7 +142,7 @@ Note that Klix widget JavaScript should be loaded in order to properly render Kl
 
 ### Receive purchase completed callback
 
-Upon purchase completion Klix back-end will send purchase completed callback to merchant's website. At that moment merchants web-shop should update order status according to payment status.
+Upon purchase completion Klix back-end will send purchase completed callback to merchant's website. At that moment merchant web-shop should update order status according to payment status.
 
 ```php
 <?php
@@ -159,6 +159,34 @@ $merchantOrder = $decoder->decodePurchaseFinalizedRequest($requestBodyString, $s
 echo $merchantOrder->getId();
 echo $merchantOrder->getStatus();
 
+?>
+```
+
+### Invoke Klix Merchant API
+
+Klix Merchant API can be used to perform various order related operations. Klix Merchant API client (class `Klix\Api\MerchantsApi`) does all the heavy lifting related to HTTP request authentication using HTTP signatures.
+
+```php
+<?php
+use Klix\Api\ApiClient;
+use Klix\Api\MerchantApi;
+use Klix\Api\OrderRefund;
+use Klix\Api\OrderRefundRequest;
+
+$orderId = '9482996d-d3b2-4518-84aa-d6649bad6e99';
+$merchantId = $this->apiConfiguration->getMerchantId();
+$this->orderRefundReturnsEffectiveAmount();
+$merchantApi = new MerchantApi(new ApiClient($apiConfiguration), $apiConfiguration);
+$orderRefund = new OrderRefund();
+$orderRefund->setAmount(10.00)
+            ->setReason(RefundReason::OTHER_REFUND)
+            ->setNote("Actual weight differs from ordered");
+$request = new OrderRefundRequest($orderId, $orderRefund);
+
+$orderRefundResponse = $merchantApi->refundOrder($request);
+
+echo $orderRefundResponse->getTotalRefundedAmount();
+echo $orderRefundResponse->getOrderEffectiveAmount();
 ?>
 ```
 

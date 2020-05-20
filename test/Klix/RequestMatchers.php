@@ -5,6 +5,7 @@ namespace Klix;
 use Closure;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
+use Klix\Api\ApiClient;
 
 class RequestMatchers
 {
@@ -29,22 +30,30 @@ class RequestMatchers
 	}
 
 	/**
-	 * @param $apiKey string
+	 * @param $headerName string
+	 * @param $headerValue string
 	 * @return Closure
 	 */
-	public static function containsHeaders($apiKey) {
-		return function(Request $request) use ($apiKey) {
-			$headers = [
-				'X-KLIX-Api-Key' => $apiKey,
-				'Accept' => 'application/json',
-				'Content-Type' => 'application/json'
-			];
-			foreach ($headers as $headerName => $headerValue) {
-				if ($request->getHeaderLine($headerName) !== $headerValue) {
-					return false;
-				}
+	public static function containsHeader($headerName, $headerValue) {
+		return self::headerValueMatches($headerName, function(string $actualHeaderValue) use ($headerName, $headerValue) {
+			if ($actualHeaderValue === $headerValue) {
+				return true;
+			} else {
+				echo "Expected header $headerName value \"$headerValue\" but was \"$actualHeaderValue\"";
+				return false;
 			}
-			return true;
+		});
+	}
+
+	/**
+	 * @param $headerName string
+	 * @param $headerValueClosure Closure
+	 * @return Closure
+	 */
+	public static function headerValueMatches($headerName, $headerValueClosure) {
+		return function(Request $request) use ($headerName, $headerValueClosure) {
+			$actualHeaderValue = $request->getHeaderLine($headerName);
+			return $headerValueClosure($actualHeaderValue);
 		};
 	}
 
@@ -54,7 +63,24 @@ class RequestMatchers
 	 */
 	public static function requestBodyMatches($requestBody) {
 		return function(Request $request) use ($requestBody) {
-			return $request->getBody()->getContents() == $requestBody;
+			$request->getBody()->rewind();
+			$actualBody = $request->getBody()->getContents();
+			if ($actualBody == $requestBody) {
+				return true;
+			} else {
+				echo "Expected HTTP request body value \"$requestBody\" but was \"$actualBody\"";
+				return false;
+			}
+		};
+	}
+
+	/**
+	 * @param $apiClient ApiClient
+	 * @return Closure
+	 */
+	public static function signatureIsValid($apiClient) {
+		return function(Request $request) use ($apiClient) {
+			return $apiClient->isSignatureValid($request);
 		};
 	}
 }

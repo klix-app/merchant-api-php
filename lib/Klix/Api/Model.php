@@ -1,6 +1,6 @@
 <?php
 
-namespace Klix\Merchant;
+namespace Klix\Api;
 
 abstract class Model
 {
@@ -12,7 +12,7 @@ abstract class Model
 	/**
 	 * @param mixed[] $values
 	 */
-	public function __construct(array $values)
+	public function __construct(array $values = [])
 	{
 		$this->values = $values;
 	}

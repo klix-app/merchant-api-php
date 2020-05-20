@@ -19,11 +19,6 @@ class KlixConfiguration
 	protected $merchantId;
 
 	/**
-	 * @var string
-	 */
-	protected $apiKey;
-
-	/**
 	 * @var string merchant's private key id obtained in Klix merchant console
 	 */
 	protected $privateKeyId;
@@ -51,16 +46,14 @@ class KlixConfiguration
 	/**
 	 * @param string $baseUri
 	 * @param string $merchantId
-	 * @param string $apiKey
 	 * @param string $privateKeyId
 	 * @param string $privateKey
 	 * @param string $providerPublicKey
 	 */
-	public function __construct($baseUri, $merchantId, $apiKey, $privateKeyId, $privateKey, $providerPublicKey)
+	public function __construct($baseUri, $merchantId, $privateKeyId, $privateKey, $providerPublicKey)
 	{
 		$this->baseUri = $baseUri;
 		$this->merchantId = $merchantId;
-		$this->apiKey = $apiKey;
 		$this->privateKeyId = $privateKeyId;
 		$this->privateKey = $this->checkIfPresent($privateKey, 'privateKey');
 		$this->providerPublicKey = $this->checkIfPresent($providerPublicKey, 'providerPublicKey');
@@ -96,14 +89,6 @@ class KlixConfiguration
 	/**
 	 * @return string
 	 */
-	public function getApiKey()
-	{
-		return $this->apiKey;
-	}
-
-	/**
-	 * @return string
-	 */
 	public function getPrivateKeyId()
 	{
 		return $this->privateKeyId;
@@ -115,6 +100,16 @@ class KlixConfiguration
 	public function getPrivateKey()
 	{
 		return $this->privateKey;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPublicKey() {
+		$private_key = openssl_pkey_get_private($this->getPrivateKey());
+		$pem_public_key = openssl_pkey_get_details($private_key)['key'];
+		$public_key = openssl_pkey_get_public($pem_public_key);
+		return openssl_pkey_get_details($public_key)['key'];
 	}
 
 	/**

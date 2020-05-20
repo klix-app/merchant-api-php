@@ -8,6 +8,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
+use Klix\Api\ApiClient;
 use PHPUnit_Framework_TestCase;
 
 abstract class BaseApiClientTest extends PHPUnit_Framework_TestCase
@@ -25,7 +26,6 @@ abstract class BaseApiClientTest extends PHPUnit_Framework_TestCase
 	public final function setUp()
 	{
 		$this->createApiConfiguration();
-		$this->createApiClient();
 		$this->beforeTest();
 	}
 
@@ -33,7 +33,6 @@ abstract class BaseApiClientTest extends PHPUnit_Framework_TestCase
 	{
 		$this->apiConfiguration = KlixConfigurationBuilder::builder()
 			->setBaseUri(KlixConfiguration::TEST_BASE_URL)
-			->setApiKey('52a49f81-0869-40a6-8dde-96a624e61b54')
 			->setMerchantId('f6cef80b-92a4-4bc2-b611-7dc597f9ba60')
 			->setPrivateKey($this->getTestResourceFileContents('keys/merchant_private_key.pem'))
 			->setPrivateKeyId('52a49f81-0869-40a6-8dde-96a624e61b54')
