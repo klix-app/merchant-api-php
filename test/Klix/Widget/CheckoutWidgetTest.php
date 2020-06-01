@@ -22,6 +22,7 @@ class CheckoutWidgetTest extends AbstractWidgetConfigurationTest
 		self::assertEquals("klix-checkout", $xml->getName());
 		self::assertEquals($widgetConfiguration->getWidgetId(), $xml->attributes()["widget-id"]);
 		self::assertEquals($widgetConfiguration->getLanguage(), $xml->attributes()["language"]);
+		self::assertEquals($widgetConfiguration->getBackToMerchantUrl(), $xml->attributes()["back-to-merchant-url"]);
 		self::assertEquals($widgetConfiguration->getCertificateName(), $xml->attributes()["certificate-name"]);
 		self::assertEquals($signature, $xml->attributes()["signature"]);
 		self::assertNull($xml->attributes()["order"]);

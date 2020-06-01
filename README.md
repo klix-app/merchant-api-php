@@ -66,6 +66,7 @@ $order = Order::create()
 $widgetConfiguration = WidgetConfiguration::create()
     ->setWidgetId("d700a786-56da-11ea-8e2d-0242ac130003")
     ->setLanguage("lv")
+    ->setBackToMerchantUrl("https://merchant.home.url.com")
     ->setOrder($order);
 ?>
 ```
@@ -107,6 +108,7 @@ $order = Order::create()
 $widgetConfiguration = WidgetConfiguration::create()
     ->setWidgetId("d700a786-56da-11ea-8e2d-0242ac130003")
     ->setLanguage("lv")
+    ->setBackToMerchantUrl("https://merchant.home.url.com")
     ->setCertificateName("6af6c4fc-56db-11ea-8e2d-0242ac130003")
     ->setOrder($order);
 ?>
@@ -132,6 +134,7 @@ Previous example will print Klix widget HTML similar to:
 <klix-checkout
     widget-id="d700a786-56da-11ea-8e2d-0242ac130003"
     language="lv"
+    back-to-merchant-url="https://merchant.home.url.com"
     certificate-name="6af6c4fc-56db-11ea-8e2d-0242ac130003"
     signature="T2mN980RRnm6eTmnggYNA51RkZ/NItnPF2H4Z/c92gyBM2MuX/u8KVuQsdBlt9XDUfFq6HA2sXIr1cNWzUrTV51VHsuq5u17aTZ4a1rWPjdegjfVVI0ErIDXKrEHzvS1PJ0VvyFUBeZEQEXWTMyRGfCTgO8/pDWbEfwTXeY8HzqftaGj00ej5/upGHhVn2SDVtGsp55I7uW/PIRUWCnxxZKwA/VzALUlTGgCGoxE9fhBiFVcOVPSi0sLUReL1yw21gRWLg/uMx6tuNHK25fvtLzVLO6MigOruA5mFfT3jnHHczrkpjOeOJ+FwZ1mmkCOyCdPYC0G8CCF8C5EYBr4dA=="
     order="{&quot;orderId&quot;:&quot;36c420f4-5487-11ea-a2e3-2e728ce88125&quot;,&quot;items&quot;:[{&quot;amount&quot;:122.99,&quot;currency&quot;:&quot;EUR&quot;,&quot;label&quot;:&quot;Vacuum cleaner TC31&quot;,&quot;count&quot;:2,&quot;unit&quot;:&quot;PIECE&quot;,&quot;taxRate&quot;:0.21,&quot;orderItemId&quot;:&quot;ff713414-56f9-11ea-82b4-0242ac130003&quot;},{&quot;amount&quot;:7.05,&quot;currency&quot;:&quot;EUR&quot;,&quot;label&quot;:&quot;Filter for TC31&quot;,&quot;count&quot;:null,&quot;unit&quot;:null,&quot;taxRate&quot;:null,&quot;orderItemId&quot;:null}],&quot;shippingOptions&quot;:[{&quot;id&quot;:&quot;courier&quot;,&quot;amount&quot;:3,&quot;currency&quot;:null,&quot;taxRate&quot;:null,&quot;title&quot;:null,&quot;excludeFromOrderIfFree&quot;:null},{&quot;id&quot;:&quot;pickup&quot;,&quot;amount&quot;:0,&quot;currency&quot;:&quot;EUR&quot;,&quot;taxRate&quot;:null,&quot;title&quot;:&quot;In store pickup&quot;,&quot;excludeFromOrderIfFree&quot;:null}],&quot;constraints&quot;:{&quot;paymentScheme&quot;:null,&quot;issuer&quot;:null,&quot;brand&quot;:&quot;Citadele&quot;}}">

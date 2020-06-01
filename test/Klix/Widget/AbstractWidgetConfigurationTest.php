@@ -48,6 +48,7 @@ abstract class AbstractWidgetConfigurationTest extends AbstractApiConfigurationT
 		return WidgetConfiguration::create()
 			->setWidgetId("d700a786-56da-11ea-8e2d-0242ac130003")
 			->setLanguage("lv")
+			->setBackToMerchantUrl("https://merchant.home.url.com")
 			->setCertificateName("6af6c4fc-56db-11ea-8e2d-0242ac130003")
 			->setOrder($order);
 	}

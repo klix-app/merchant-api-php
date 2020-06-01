@@ -14,6 +14,7 @@ class WidgetConfigurationTest extends AbstractWidgetConfigurationTest
 		self::assertEquals("d700a786-56da-11ea-8e2d-0242ac130003"
 			. "lv"
 			. "6af6c4fc-56db-11ea-8e2d-0242ac130003"
+			. "https://merchant.home.url.com"
 
 			. "36c420f4-5487-11ea-a2e3-2e728ce88125"
 			. "122.99"
