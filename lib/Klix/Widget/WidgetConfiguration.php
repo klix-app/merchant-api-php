@@ -25,6 +25,16 @@ class WidgetConfiguration
 	protected $certificateName;
 
 	/**
+	 * @var string
+	 */
+	protected $redirectUrl;
+
+	/**
+	 * @var string
+	 */
+	protected $backToMerchantUrl;
+
+	/**
 	 * @var Order
 	 */
 	protected $order;
@@ -44,6 +54,8 @@ class WidgetConfiguration
 		return $this->widgetId
 			. $this->language
 			. $this->nullToEmptyString($this->certificateName)
+			. $this->nullToEmptyString($this->redirectUrl)
+			. $this->nullToEmptyString($this->backToMerchantUrl)
 			. $this->order->toSignatureSource();
 	}
 
@@ -113,6 +125,42 @@ class WidgetConfiguration
 	public function getCertificateName()
 	{
 		return $this->certificateName;
+	}
+
+	/**
+	 * @param string $redirectUrl
+	 * @return $this
+	 */
+	public function setRedirectUrl($redirectUrl)
+	{
+		$this->redirectUrl = $redirectUrl;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRedirectUrl()
+	{
+		return $this->redirectUrl;
+	}
+
+	/**
+	 * @param string $backToMerchantUrl
+	 * @return $this
+	 */
+	public function setBackToMerchantUrl($backToMerchantUrl)
+	{
+		$this->backToMerchantUrl = $backToMerchantUrl;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getBackToMerchantUrl()
+	{
+		return $this->backToMerchantUrl;
 	}
 
 	/**
