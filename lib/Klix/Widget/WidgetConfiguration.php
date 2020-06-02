@@ -27,7 +27,7 @@ class WidgetConfiguration
 	/**
 	 * @var string
 	 */
-	protected $redirectUrl;
+	protected $successfulPurchaseRedirectUrl;
 
 	/**
 	 * @var string
@@ -54,7 +54,7 @@ class WidgetConfiguration
 		return $this->widgetId
 			. $this->language
 			. $this->nullToEmptyString($this->certificateName)
-			. $this->nullToEmptyString($this->redirectUrl)
+			. $this->nullToEmptyString($this->successfulPurchaseRedirectUrl)
 			. $this->nullToEmptyString($this->backToMerchantUrl)
 			. $this->order->toSignatureSource();
 	}
@@ -128,21 +128,21 @@ class WidgetConfiguration
 	}
 
 	/**
-	 * @param string $redirectUrl
+	 * @param string $successfulPurchaseRedirectUrl
 	 * @return $this
 	 */
-	public function setRedirectUrl($redirectUrl)
+	public function setSuccessfulPurchaseRedirectUrl($successfulPurchaseRedirectUrl)
 	{
-		$this->redirectUrl = $redirectUrl;
+		$this->successfulPurchaseRedirectUrl = $successfulPurchaseRedirectUrl;
 		return $this;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getRedirectUrl()
+	public function getSuccessfulPurchaseRedirectUrl()
 	{
-		return $this->redirectUrl;
+		return $this->successfulPurchaseRedirectUrl;
 	}
 
 	/**
