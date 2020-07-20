@@ -15,9 +15,9 @@ class WidgetConfigurationSignerTest extends AbstractWidgetConfigurationTest
 		$widgetSigner = new WidgetConfigurationSigner($apiConfiguration);
 		$signature = $widgetSigner->getSignature($widgetConfiguration);
 
-		$this->assertEquals("T2mN980RRnm6eTmnggYNA51RkZ/NItnPF2H4Z/c92gyBM2MuX/u8KVuQsdBlt9XDUfFq6HA2sXIr1cN"
-			. "WzUrTV51VHsuq5u17aTZ4a1rWPjdegjfVVI0ErIDXKrEHzvS1PJ0VvyFUBeZEQEXWTMyRGfCTgO8/pDWbEfwTXeY8HzqftaGj00ej5/"
-			. "upGHhVn2SDVtGsp55I7uW/PIRUWCnxxZKwA/VzALUlTGgCGoxE9fhBiFVcOVPSi0sLUReL1yw21gRWLg/uMx6tuNHK25fvtLzVLO6Mi"
-			. "gOruA5mFfT3jnHHczrkpjOeOJ+FwZ1mmkCOyCdPYC0G8CCF8C5EYBr4dA==", $signature);
+		$this->assertEquals("EbaePsGwMZRfAZaSVK3bnMpiTTBTQy6ZlF19GMleadr+lG44QW7m2btARsrEsg7K9EQ3orsAKiMvoCFS"
+			. "emjp4iOvYr1/XkOGs3WMxq9QFriZkFiqeBEOvkKVZ68DrR5Jkp/on8T06PHqjVbXV15INNpLwQfuyElD8/ElPARJecx9VYeeeUPmBFgn"
+			. "39xu2x2JrMW51GZ0bJyLi2yReLW3sNy7fwRGMdqNDD4TBidij+egtTEA9x8kfYXG+vPQWVmtjIiHMaNZ62WxwKsWf7dCzbTCSdi3XWXR"
+			. "Rh5bE0oJOHMWZ9peI1bKqNRn5GAeIGCBqTY2vtwq9qE9hji1QkKiAA==", $signature);
 	}
 }
