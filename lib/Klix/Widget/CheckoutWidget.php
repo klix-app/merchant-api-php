@@ -35,6 +35,8 @@ class CheckoutWidget
 			. $this->getHtmlAttribute('widget-id', $this->widgetConfiguration->getWidgetId())
 			. $this->getHtmlAttribute('language', $this->widgetConfiguration->getLanguage())
 			. $this->getHtmlAttribute('certificate-name', $this->widgetConfiguration->getCertificateName())
+			. $this->getHtmlAttribute('success-redirect-url', $this->widgetConfiguration->getSuccessfulPurchaseRedirectUrl())
+			. $this->getHtmlAttribute('back-to-merchant-url', $this->widgetConfiguration->getBackToMerchantUrl())
 			. $this->getHtmlAttribute('signature', $this->signature);
 		if ($this->widgetConfiguration->isJsonConfiguration()) {
 			$representation .= $this->getHtmlAttribute('order', $this->widgetConfiguration->getOrderJson());

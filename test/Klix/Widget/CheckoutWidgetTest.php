@@ -23,6 +23,8 @@ class CheckoutWidgetTest extends AbstractWidgetConfigurationTest
 		self::assertEquals($widgetConfiguration->getWidgetId(), $xml->attributes()["widget-id"]);
 		self::assertEquals($widgetConfiguration->getLanguage(), $xml->attributes()["language"]);
 		self::assertEquals($widgetConfiguration->getCertificateName(), $xml->attributes()["certificate-name"]);
+		self::assertEquals($widgetConfiguration->getBackToMerchantUrl(), $xml->attributes()["back-to-merchant-url"]);
+		self::assertEquals($widgetConfiguration->getSuccessfulPurchaseRedirectUrl(), $xml->attributes()["success-redirect-url"]);
 		self::assertEquals($signature, $xml->attributes()["signature"]);
 		self::assertNull($xml->attributes()["order"]);
 		self::assertEquals($widgetConfiguration->getOrder()->getOrderId(), $xml->attributes()["order-id"]);
@@ -46,6 +48,7 @@ class CheckoutWidgetTest extends AbstractWidgetConfigurationTest
 		self::assertEquals($widgetConfiguration->getWidgetId(), $xml->attributes()["widget-id"]);
 		self::assertEquals($widgetConfiguration->getLanguage(), $xml->attributes()["language"]);
 		self::assertEquals($widgetConfiguration->getCertificateName(), $xml->attributes()["certificate-name"]);
+		self::assertEquals($widgetConfiguration->getBackToMerchantUrl(), $xml->attributes()["back-to-merchant-url"]);
 		self::assertEquals($signature, $xml->attributes()["signature"]);
 		self::assertEquals($widgetConfiguration->getOrderJson(), $xml->attributes()["order"]);
 		self::assertNull($xml->attributes()["amount"]);
@@ -64,6 +67,8 @@ class CheckoutWidgetTest extends AbstractWidgetConfigurationTest
 		self::assertEquals($widgetConfiguration->getWidgetId(), $xml->attributes()["widget-id"]);
 		self::assertEquals($widgetConfiguration->getLanguage(), $xml->attributes()["language"]);
 		self::assertEquals($widgetConfiguration->getCertificateName(), $xml->attributes()["certificate-name"]);
+		self::assertEquals($widgetConfiguration->getBackToMerchantUrl(), $xml->attributes()["back-to-merchant-url"]);
+		self::assertEquals($widgetConfiguration->getSuccessfulPurchaseRedirectUrl(), $xml->attributes()["success-redirect-url"]);
 		self::assertEquals($signature, $xml->attributes()["signature"]);
 		self::assertEquals($widgetConfiguration->getOrderJson(), $xml->attributes()["order"]);
 		self::assertNull($xml->attributes()["amount"]);
@@ -87,6 +92,8 @@ class CheckoutWidgetTest extends AbstractWidgetConfigurationTest
 			->setWidgetId("d700a786-56da-11ea-8e2d-0242ac130003")
 			->setLanguage("lv")
 			->setCertificateName("6af6c4fc-56db-11ea-8e2d-0242ac130003")
+			->setSuccessfulPurchaseRedirectUrl("https://example.com/purchase-completed")
+			->setBackToMerchantUrl("https://example.com/payment-method-selection")
 			->setOrder($order);
 	}
 }
