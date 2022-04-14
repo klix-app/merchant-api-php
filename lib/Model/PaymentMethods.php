@@ -25,7 +25,18 @@ class PaymentMethods implements \JsonSerializable {
 	 * @var string[]
 	 */
 	public $names;
-	
+	/**
+	 *
+	 * @var string[]
+	 */
+	public $logos;
+
+	/**
+	 *
+	 * @var string[]
+	 */
+	public $payment_method_groups;
+
 	/**
 	 *
 	 * @var string[]
