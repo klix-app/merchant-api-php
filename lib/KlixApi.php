@@ -43,7 +43,7 @@ class KlixApi {
 	/**
 	 * 
 	 * @param string $currency
-	 * @return PaymentMethods
+	 * @return Model\PaymentMethods
 	 */
 	
 	public function getPaymentMethods($currency = 'EUR') {
@@ -58,7 +58,7 @@ class KlixApi {
 	/**
 	 * 
 	 * @param \Klix\Model\Purchase $purchase
-	 * @return \Klix\Model\Purchase
+	 * @return Model\Purchase
 	 */
 	
 	public function createPurchase($purchase) {
@@ -70,7 +70,7 @@ class KlixApi {
 	/**
 	 * 
 	 * @param string $purchaseId
-	 * @return Purchase
+	 * @return Model\Purchase
 	 */
 	
 	public function getPurchase($purchaseId) {
@@ -80,7 +80,7 @@ class KlixApi {
 	/**
 	 * 
 	 * @param string $purchaseId
-	 * @return Purchase
+	 * @return Model\Purchase
 	 */
 	public function cancelPurchase($purchaseId) {
 		return $this->mapper->map($this->request('POST', 'purchases/' . $purchaseId . '/cancel/'), new Model\Purchase());
@@ -89,7 +89,7 @@ class KlixApi {
 	/**
 	 * 
 	 * @param string $purchaseId
-	 * @return Purchase
+	 * @return Model\Purchase
 	 */
 	public function releasePurchase($purchaseId) {
 		return $this->mapper->map($this->request('POST', 'purchases/' . $purchaseId . '/release/'), new Model\Purchase());
@@ -99,7 +99,7 @@ class KlixApi {
 	 * 
 	 * @param string $purchaseId
 	 * @param int $amount
-	 * @return Purchase
+	 * @return Model\Purchase
 	 */
 	public function capturePurchase($purchaseId, $amount = null) {
 		$options = [];
@@ -115,7 +115,7 @@ class KlixApi {
 	 * 
 	 * @param string $purchaseId
 	 * @param string $token
-	 * @return Purhcase
+	 * @return Model\Purchase
 	 */
 	public function chargePurchase($purchaseId, $token) {
 		return $this->mapper->map($this->request('POST', 'purchases/' . $purchaseId . '/charge/', [
@@ -128,7 +128,7 @@ class KlixApi {
 	/**
 	 * 
 	 * @param string $purchaseId
-	 * @return Purchase
+	 * @return Model\Purchase
 	 */
 	public function deleteRecurringToken($purchaseId) {
 		return $this->mapper->map($this->request('POST', 'purchases/' . $purchaseId . '/delete_recurring_token/'), new Model\Purchase());
@@ -138,7 +138,7 @@ class KlixApi {
 	 * 
 	 * @param string $purchaseId
 	 * @param int $amount
-	 * @return Purchase
+	 * @return Model\Purchase
 	 */
 	public function refundPurchase($purchaseId, $amount = null) {
 		$options = [];
