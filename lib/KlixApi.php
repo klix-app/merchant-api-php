@@ -41,18 +41,36 @@ class KlixApi {
 	}
 	
 	/**
-	 * 
-	 * @param string $currency
-	 * @return Model\PaymentMethods
+	 * getPaymentMethods
+	 *
+	 * @param  mixed $currency Currency you'd use in your Purchase in ISO 4217 format, e.g. EUR.
+	 * @param  mixed $country Country code in the ISO 3166-1 alpha-2 format (e.g. LV,LT,EE,RU). Optional.
+	 * @param  mixed $language Country code in the ISO 3166-1 alpha-2 format (e.g. lv,lt,ee,ru). Optional.
+	 * @param  mixed $recurring If provided in the format of recurring=true, will filter out the methods that don't support recurring charges (see POST /purchases/{id}/charge/).
+	 * @param  mixed $skip_capture If provided in the format of skip_capture=true, will filter out the methods that don't support skip_capture functionality (see the description for Purchase.skip_capture field).
+	 * @param  mixed $preauthorization If provided in the format of preauthorization=true, will filter out the methods that don't support preauthorization functionality (see the description for Purchase.skip_capture field).
+	 * @return void
 	 */
-	
-	public function getPaymentMethods($currency = 'EUR') {
-		return $this->mapper->map($this->request('GET', 'payment_methods/', [
-			'query' => [
-				'brand_id' => $this->brandId,
-				'currency' => $currency
-			]
-		]), new Model\PaymentMethods());
+	public function getPaymentMethods($currency = 'EUR',$country='',$language='',$recurring='',$skip_capture='',$preauthorization='') {
+		$query['query']['brand_id']=$this->brandId;
+		$query['query']['currency']=$currency;
+
+		if($country !=='' ) {
+			$query['query']['country']=strtoupper($country);
+		}
+		if($language !=='' ) {
+			$query['query']['language']=strtolower($language);
+		}
+		if($recurring !== '' ) {
+			$query['query']['recurring']=$recurring;
+		}
+		if($skip_capture !== '' ) {
+			$query['query']['skip_capture']=$skip_capture;
+		}
+		if($preauthorization !== '' ) {
+			$query['query']['preauthorization']=$preauthorization;
+		}
+		return $this->mapper->map($this->request('GET', 'payment_methods/', $query), new Model\PaymentMethods());
 	}
 	
 	/**
