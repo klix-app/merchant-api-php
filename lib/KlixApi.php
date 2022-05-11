@@ -49,7 +49,7 @@ class KlixApi {
 	 * @param  mixed $recurring If provided in the format of recurring=true, will filter out the methods that don't support recurring charges (see POST /purchases/{id}/charge/).
 	 * @param  mixed $skip_capture If provided in the format of skip_capture=true, will filter out the methods that don't support skip_capture functionality (see the description for Purchase.skip_capture field).
 	 * @param  mixed $preauthorization If provided in the format of preauthorization=true, will filter out the methods that don't support preauthorization functionality (see the description for Purchase.skip_capture field).
-	 * @return void
+	 * @return Model\PaymentMethods
 	 */
 	public function getPaymentMethods($currency = 'EUR',$country='',$language='',$recurring='',$skip_capture='',$preauthorization='') {
 		$query['query']['brand_id']=$this->brandId;
