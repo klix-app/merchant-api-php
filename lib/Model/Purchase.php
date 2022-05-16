@@ -7,7 +7,7 @@ class Purchase implements \JsonSerializable {
 	 *
 	 * @var string
 	 */
-	public $uuid;
+	public $id;
 	
 	/**
 	 *
