@@ -2,6 +2,8 @@
 namespace Klix\Model;
 
 class PaymentMethods implements \JsonSerializable {
+	use JsonSerializer;
+
 	/**
 	 *
 	 * @var string[]
@@ -42,9 +44,5 @@ class PaymentMethods implements \JsonSerializable {
 	 * @var string[]
 	 */
 	public $card_methods;
-	
-	public function jsonSerialize() {
-		return array_filter((array) $this);
-	}
 }
 

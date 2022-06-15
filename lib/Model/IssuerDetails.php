@@ -2,6 +2,8 @@
 namespace Klix\Model;
 
 class IssuerDetails implements \JsonSerializable {
+	use JsonSerializer;
+
 	/**
 	 *
 	 * @var string
@@ -61,8 +63,4 @@ class IssuerDetails implements \JsonSerializable {
 	 * @var string
 	 */
 	public $tax_number;
-	
-	public function jsonSerialize() {
-		return array_filter((array) $this);
-	}
 }

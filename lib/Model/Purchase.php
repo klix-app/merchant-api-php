@@ -2,6 +2,7 @@
 namespace Klix\Model;
 
 class Purchase implements \JsonSerializable {
+	use JsonSerializer;
 	
 	/**
 	 *
@@ -230,10 +231,5 @@ class Purchase implements \JsonSerializable {
 	 * @var string
 	 */
 	public $direct_post_url;
-	
-	public function jsonSerialize() {
-		return array_filter((array) $this);
-	}
-
 }
 

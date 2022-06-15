@@ -2,6 +2,7 @@
 namespace Klix\Model;
 
 class Product implements \JsonSerializable {
+	use JsonSerializer;
 	
 	/**
 	 * @var string
@@ -27,8 +28,4 @@ class Product implements \JsonSerializable {
 	 * @var float
 	 */
 	public $tax_percent;
-	
-	public function jsonSerialize() {
-		return array_filter((array) $this);
-	}
 }

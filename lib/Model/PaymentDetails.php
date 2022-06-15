@@ -2,6 +2,8 @@
 namespace Klix\Model;
 
 class PaymentDetails implements \JsonSerializable {
+	use JsonSerializer;
+
 	/**
 	 *
 	 * @var bool
@@ -67,8 +69,4 @@ class PaymentDetails implements \JsonSerializable {
 	 * @var int
 	 */
 	public $remote_paid_on;
-	
-	public function jsonSerialize() {
-		return array_filter((array) $this);
-	}
 }

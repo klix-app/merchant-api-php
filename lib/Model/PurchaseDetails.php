@@ -2,6 +2,8 @@
 namespace Klix\Model;
 
 class PurchaseDetails implements \JsonSerializable {
+	use JsonSerializer;
+
 	/**
 	 *
 	 * @var string
@@ -86,9 +88,5 @@ class PurchaseDetails implements \JsonSerializable {
 	 * @var string
 	 */
 	public $email_message;
-	
-	public function jsonSerialize() {
-		return array_filter((array) $this);
-	}
 }
 
