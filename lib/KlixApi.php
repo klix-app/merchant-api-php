@@ -158,12 +158,13 @@ class KlixApi {
 	 * @param int $amount
 	 * @return Model\Purchase
 	 */
-	public function refundPurchase($purchaseId, $amount = null) {
+	public function refundPurchase($purchaseId, $amount = null, $client_name = null) {
 		$options = [];
 		if ($amount !== null) {
-			$options['json'] = [
-				'amount' => $amount
-			];
+			$options['json']['amount'] = $amount;
+		}
+		if ($client_name !== null) {
+			$options['json']['client_name'] = $client_name;
 		}
 		return $this->mapper->map($this->request('POST', 'purchases/' . $purchaseId . '/refund/', $options), new Model\Purchase());
 	}
