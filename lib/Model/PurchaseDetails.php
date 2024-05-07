@@ -15,6 +15,12 @@ class PurchaseDetails implements \JsonSerializable {
 	 * @var Product[]
 	 */
 	public $products;
+
+	/**
+	 *
+	 * @var PaymentMethodDetails
+	 */
+	public $payment_method_details;
 	
 	/**
 	 *
