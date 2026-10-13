@@ -6,7 +6,7 @@ namespace Klix\Model;
 
 trait JsonSerializer
 {
-	function jsonSerialize() {
+	public function jsonSerialize(): mixed {
 		return array_filter((array) $this, function($property) {
 			return isset($property);
 		});

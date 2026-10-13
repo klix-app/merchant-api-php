@@ -2,7 +2,7 @@
     "name": "klix/klix-sdk-php",
     "type": "library",
     "require": {
-        "php": ">=7.2.0",
+        "php": ">=8.0",
         "guzzlehttp/guzzle": "^7.0",
         "netresearch/jsonmapper": "^4.0"
     },
